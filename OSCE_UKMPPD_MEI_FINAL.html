@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OSCE UKMPPD — Materi Bulan Mei</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0f1117;--s1:#161b27;--s2:#1e2335;--s3:#252a3d;
+  --border:#2e3452;--border2:#3d4468;
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
+  --accent:#818cf8;--accent-bg:#1e1b4b;
+  --green:#34d399;--green-bg:#022c22;--r:10px;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+#header{position:sticky;top:0;z-index:100;background:rgba(15,17,23,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;padding:0 20px;height:56px}
+.logo-icon{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#818cf8,#c084fc);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff;flex-shrink:0}
+.logo-text{font-weight:700;font-size:14px;color:var(--text);white-space:nowrap}
+.logo-sub{font-size:10px;color:var(--text3);margin-top:-2px}
+.search-wrap{flex:1;max-width:420px;margin:0 auto;position:relative}
+.search-wrap input{width:100%;padding:8px 34px;background:var(--s2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:inherit;font-size:13px;outline:none;transition:border-color .2s}
+.search-wrap input:focus{border-color:var(--accent)}
+.search-wrap input::placeholder{color:var(--text3)}
+.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--text3);pointer-events:none}
+.search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text3);cursor:pointer;font-size:18px;line-height:1;padding:0;display:none}
+.btn-save-all{padding:7px 16px;flex-shrink:0;background:linear-gradient(135deg,#818cf8,#c084fc);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap;transition:opacity .2s}
+.btn-save-all:hover{opacity:.85}
+.app{display:flex;min-height:calc(100vh - 56px)}
+#sidebar{width:220px;flex-shrink:0;background:rgba(15,17,23,.9);border-right:1px solid var(--border);padding:10px 8px;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto}
+.side-label{padding:4px 8px 6px;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3)}
+.side-item{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;cursor:pointer;font-size:12.5px;color:var(--text2);transition:all .15s;margin-bottom:1px;user-select:none}
+.side-item:hover{background:var(--s2);color:var(--text)}
+.side-item.active{background:var(--accent-bg);color:var(--accent);font-weight:600}
+.side-icon{font-size:15px;flex-shrink:0}
+.side-name{flex:1}
+.side-count{font-size:10px;font-weight:600;padding:1px 6px;border-radius:10px;background:var(--s3);color:var(--text3);flex-shrink:0}
+.side-item.active .side-count{background:rgba(129,140,248,.15);color:var(--accent)}
+.side-divider{height:1px;background:var(--border);margin:6px 0}
+main{flex:1;padding:16px 20px;min-width:0;max-width:940px}
+.filter-box{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:14px}
+.filter-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.filter-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-right:4px}
+.yr-btn{padding:5px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text3);font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;transition:all .15s}
+.yr-btn.on-2022{background:#1a3354;color:#60a5fa;border-color:#2563eb}
+.yr-btn.on-2023{background:#3a1d1d;color:#f87171;border-color:#ef4444}
+.yr-btn.on-2024{background:#052e1e;color:#34d399;border-color:#10b981}
+.yr-btn.on-2025{background:#2a1060;color:#c084fc;border-color:#a855f7}
+.stats{display:flex;gap:24px;flex-wrap:wrap}
+.stat{display:flex;align-items:baseline;gap:6px}
+.stat-num{font-size:22px;font-weight:700;letter-spacing:-.04em}
+.stat-lbl{font-size:11px;color:var(--text3);font-weight:500}
+.sys-section{margin-bottom:20px}
+.sys-head{display:flex;align-items:center;gap:10px;padding:10px 14px;margin-bottom:8px;background:var(--s1);border:1px solid var(--border);border-radius:var(--r)}
+.sys-head h2{font-size:14px;font-weight:700;letter-spacing:-.01em}
+.sys-count{margin-left:auto;font-size:10px;font-weight:600;padding:2px 8px;border-radius:12px;background:var(--s3);color:var(--text3)}
+.card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);margin-bottom:6px;transition:border-color .2s;overflow:hidden}
+.card.open{border-color:var(--accent)}
+.card-head{display:flex;align-items:flex-start;padding:12px 14px;cursor:pointer;gap:10px;user-select:none}
+.card-arrow{width:22px;height:22px;border-radius:6px;background:var(--s3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:all .2s}
+.card.open .card-arrow{background:var(--accent)}
+.card-arrow svg{transition:transform .2s}
+.card.open .card-arrow svg{transform:rotate(180deg)}
+.card-info{flex:1;min-width:0}
+.card-name{font-weight:600;font-size:13.5px;line-height:1.4;margin-bottom:5px}
+.card-tags{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+.tag{font-size:10px;padding:2px 8px;border-radius:12px;font-weight:600}
+.tag-2022{background:#1a3354;color:#60a5fa}
+.tag-2023{background:#3a1d1d;color:#f87171}
+.tag-2024{background:#052e1e;color:#34d399}
+.tag-2025{background:#2a1060;color:#c084fc}
+.tag-multi{background:#1e1550;color:#a78bfa;border:1px solid rgba(167,139,250,.2)}
+.tag-saved{background:var(--green-bg);color:var(--green)}
+.dots{display:flex;gap:3px;flex-shrink:0;margin-top:3px}
+.dot{width:7px;height:7px;border-radius:50%;transition:all .2s}
+.card-body{display:none;border-top:1px solid var(--border);padding:14px}
+.card.open .card-body{display:block}
+.fields{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.field-group{display:flex;flex-direction:column;gap:5px}
+.field-label{font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:4px}
+.field-label.ss{color:#60a5fa}.field-label.dd{color:#fb923c}.field-label.tx{color:#34d399}
+textarea{width:100%;min-height:110px;padding:9px 11px;border-radius:8px;font-family:inherit;font-size:12.5px;line-height:1.6;resize:vertical;outline:none;color:var(--text);transition:all .2s}
+.ss-ta{background:#0a1628;border:1px solid #1e3a5f}.ss-ta:focus{border-color:#60a5fa;box-shadow:0 0 0 3px rgba(96,165,250,.1)}
+.dd-ta{background:#1a0e04;border:1px solid #6b2d0a}.dd-ta:focus{border-color:#fb923c;box-shadow:0 0 0 3px rgba(251,146,60,.1)}
+.tx-ta{background:#011a10;border:1px solid #064e3b}.tx-ta:focus{border-color:#34d399;box-shadow:0 0 0 3px rgba(52,211,153,.1)}
+textarea::placeholder{color:var(--text3)}
+.card-actions{display:flex;justify-content:flex-end;gap:6px;margin-top:10px}
+.btn-reset{font-size:12px;padding:6px 14px;border-radius:7px;border:1px solid var(--border);background:transparent;color:var(--text3);cursor:pointer;font-family:inherit;font-weight:500;transition:all .15s}
+.btn-reset:hover{background:#3a1d1d;color:#f87171;border-color:#ef4444}
+.btn-save{font-size:12px;padding:6px 18px;border-radius:7px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-family:inherit;font-weight:600;transition:all .2s}
+.btn-save:hover{opacity:.85}
+.btn-save.flash{background:#059669}
+.empty{text-align:center;padding:60px 20px;color:var(--text3)}
+.empty-icon{font-size:48px;margin-bottom:12px}
+.mobile-bar{display:none;margin-bottom:12px}
+.btn-menu{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--s1);border:1px solid var(--border);border-radius:8px;color:var(--text2);cursor:pointer;font-family:inherit;font-size:13px;font-weight:500}
+.overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.7)}
+.overlay.show{display:block}
+.overlay-sidebar{position:absolute;left:0;top:0;bottom:0;width:240px;background:var(--bg);padding:10px 8px;overflow-y:auto;border-right:1px solid var(--border)}
+#toast{position:fixed;bottom:20px;right:20px;z-index:999;background:var(--s2);border:1px solid var(--accent);color:var(--text);padding:10px 18px;border-radius:10px;font-size:13px;font-weight:500;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+#toast.show{opacity:1;transform:translateY(0)}
+@media(max-width:768px){#sidebar{display:none}.mobile-bar{display:flex}.fields{grid-template-columns:1fr}main{padding:12px}}
+</style>
+</head>
+<body>
+<div id="header">
+  <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+    <div class="logo-icon">O</div>
+    <div><div class="logo-text">OSCE UKMPPD</div><div class="logo-sub">Materi Bulan Mei 2022–2025</div></div>
+  </div>
+  <div class="search-wrap">
+    <span class="search-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+    <input type="text" id="searchInput" placeholder="Cari diagnosis, gejala, tatalaksana...">
+    <button class="search-clear" id="searchClear" onclick="clearSearch()">×</button>
+  </div>
+  <button class="btn-save-all" onclick="saveAll()">&#128190; Simpan Semua</button>
+</div>
+<div class="app">
+  <div id="sidebar"></div>
+  <div class="overlay" id="overlay" onclick="closeOverlay()">
+    <div class="overlay-sidebar" id="overlayNav" onclick="event.stopPropagation()"></div>
+  </div>
+  <main>
+    <div class="mobile-bar">
+      <button class="btn-menu" onclick="openOverlay()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <span id="activeSysLabel">Semua Sistem</span>
+      </button>
+    </div>
+    <div class="filter-box">
+      <div class="filter-top">
+        <span class="filter-label">Filter Tahun</span>
+        <button class="yr-btn on-2022" onclick="toggleYr(2022,this)">Mei 2022</button>
+        <button class="yr-btn on-2023" onclick="toggleYr(2023,this)">Mei 2023</button>
+        <button class="yr-btn on-2024" onclick="toggleYr(2024,this)">Mei 2024</button>
+        <button class="yr-btn on-2025" onclick="toggleYr(2025,this)">Mei 2025</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="stat-num" id="statTotal" style="color:var(--accent)">0</span><span class="stat-lbl">Total Topik</span></div>
+        <div class="stat"><span class="stat-num" id="statMulti" style="color:#c084fc">0</span><span class="stat-lbl">Muncul &gt;1 Tahun</span></div>
+        <div class="stat"><span class="stat-num" id="statFilled" style="color:var(--green)">0</span><span class="stat-lbl">Sudah Diisi</span></div>
+      </div>
+    </div>
+    <div id="content"></div>
+  </main>
+</div>
+<div id="toast"></div>
+
+<script>
+const SYSTEMS=[
+  {key:'saraf',label:'Saraf',icon:'🧠'},
+  {key:'psikiatri',label:'Psikiatri',icon:'💭'},
+  {key:'indera',label:'Indera',icon:'👁'},
+  {key:'respirasi',label:'Respirasi',icon:'🫁'},
+  {key:'kardio',label:'Kardiovaskular',icon:'❤️'},
+  {key:'gastro',label:'Gastrointestinal',icon:'🫄'},
+  {key:'ginjal',label:'Ginjal & Saluran Kemih',icon:'💧'},
+  {key:'obgyn',label:'Obgyn',icon:'🌸'},
+  {key:'endokrin',label:'Endokrin & Metabolisme',icon:'⚡'},
+  {key:'hemato',label:'Hemato, Imunologi & Infeksi',icon:'🦠'},
+  {key:'musku',label:'Muskuloskeletal',icon:'🦴'},
+  {key:'integumen',label:'Integumen',icon:'🩹'},
+]
+
+const DATA={
+saraf:[
+{id:'migrain',name:'Classic Migrain',years:[2022],ss:'Nyeri kepala unilateral pulsatil intensitas sedang-berat, memburuk dengan aktivitas. Mual/muntah, foto/fonofobia. Aura: gejala neurologis reversibel <60 menit sebelum nyeri.',dd:'TTH, Cluster headache, Neuralgia trigeminal, SAH (thunderclap)',tx:'Serangan: Sumatriptan 50mg atau NSAID+Metoklopramid. Profilaksis ≥4x/bulan: Propranolol 2x40mg atau Topiramat.'},
+{id:'tth',name:'TTH (Tension-Type Headache)',years:[2022],ss:'Nyeri kepala bilateral menekan/mengikat (non-pulsatil), intensitas ringan-sedang. Tidak memburuk dengan aktivitas. Max 1 dari: mual, fotofobia, fonofobia.',dd:'Migren tanpa aura, Cluster headache, Nyeri kepala servikal, SAH',tx:'Episodik: Parasetamol 500-1000mg atau Ibuprofen 400mg. Kronis: Amitriptilin 10-25mg malam. Manajemen stres.'},
+{id:'bppv',name:'BPPV',years:[2022,2023],ss:'Vertigo posisional episodik <1 menit dipicu perubahan posisi kepala. Dix-Hallpike (+), nistagmus geotropik. TIDAK ada tuli/tinitus.',dd:'Vestibular neuritis, Meniere disease, Stroke serebelar, Labirintitis',tx:'Manuver Epley (kanal posterior). Betahistin 2x16mg jika perlu. Edukasi hindari posisi pemicu.'},
+{id:'bells_palsy',name:"Bell's Palsy",years:[2022],ss:'Paresis wajah unilateral perifer akut - DAHI IKUT LEMAH (beda lesi sentral). Hiperakusis, gangguan pengecapan 2/3 anterior lidah.',dd:'Stroke sentral (dahi tidak terlibat), Ramsay Hunt (ada vesikel telinga), Tumor parotis',tx:'Prednison 1mg/kgBB/hari x5 hari tapering. Ramsay Hunt: + Asiklovir 5x800mg x7 hari. Pelindung mata: air mata buatan.'},
+{id:'hnp',name:'HNP Lumbal',years:[2022,2025],ss:'Nyeri punggung bawah menjalar ke tungkai sesuai dermatom. SLR/Laseque (+) <60°. Defisit motorik/sensorik/refleks sesuai level. MRI: herniasi diskus.',dd:'Stenosis kanal spinalis, Tumor intradural, Piriformis syndrome, Spondilitis TB',tx:'Konservatif 6 minggu: NSAID, relaksan otot, fisioterapi McKenzie. Gagal/kauda ekuina: diskektomi.'},
+{id:'lbp_hnp',name:'LBP e.c Susp. HNP',years:[2023],ss:'Nyeri pinggang bawah kronik diperberat aktivitas. Palpasi otot paravertebral spasme (+). Evaluasi red flag (tumor, infeksi, fraktur).',dd:'HNP, Spondilitis TB, Fraktur kompresi, Tumor vertebra, Miofasial pain',tx:'NSAID, fisioterapi McKenzie, edukasi posisi, penurunan BB. MRI jika red flag.'},
+{id:'spondilitis_tb',name:'Spondilitis TB',years:[2023,2025],ss:'Nyeri punggung kronis progresif, GIBBUS (kifosis angular - khas TB). Demam subfebris, keringat malam, BB turun. MRI: destruksi vertebra + cold abscess.',dd:'Osteomyelitis piogenik, Metastasis vertebra, Fraktur kompresi osteoporosis, Myeloma',tx:'OAT Kategori I: 2RHZE/10RH. Imobilisasi korset. Operasi jika defisit neurologis/instabilitas.'},
+{id:'meniere',name:'Meniere Disease',years:[2023,2025],ss:'TRIAS: (1) Vertigo episodik 20 menit-jam (2) Tuli sensorineural fluktuatif frekuensi rendah (3) Tinitus. Aural fullness. Audiogram: tuli frekuensi rendah.',dd:'BPPV (tanpa tuli/tinitus), Vestibular migrain, Neuroma akustik, TIA vertebrobasiler',tx:'Diet rendah garam <2g/hari, hindari kafein/alkohol. Betahistin 3x16-24mg. Serangan akut: Diazepam 5mg. Diuretik HCT.'},
+{id:'demensia',name:'Demensia Alzheimer',years:[2023],ss:'Gangguan memori jangka pendek progresif, disorientasi, penurunan fungsi eksekutif. MMSE turun. Onset >60 tahun. Singkirkan penyebab reversibel.',dd:'Demensia vaskular, LBD, FTD, Depresi, MCI, Hipotiroid, B12 defisiensi',tx:'Non-farmako: stimulasi kognitif. Farmako: Donepezil 5-10mg malam (AChEI). Memantine untuk sedang-berat.'},
+{id:'tia',name:'TIA',years:[2023],ss:'Defisit neurologis fokal REVERSIBEL <24 jam (biasanya <1 jam). CT/MRI normal. ABCD2 score untuk risiko stroke lanjutan.',dd:'Stroke iskemik, Hipoglikemia, Migrain dengan aura, Seizure fokal (Todd paralysis)',tx:'Antiplatelet ganda (Aspirin+Clopidogrel) segera x21 hari. Statin. Kontrol faktor risiko. Rawat inap 24-48 jam.'},
+{id:'stroke',name:'Stroke Iskemik',years:[2023],ss:'Defisit neurologis fokal mendadak: hemiparesis, afasia, hemianopsia. FAST: Face, Arm, Speech, Time. CT non-kontras awal normal/hipodens. Tanda UMN.',dd:'TIA, Stroke hemoragik (CT hiperdens), Ensefalitis, Hipoglikemia, Todd paralysis',tx:'<4.5 jam: rtPA 0.9mg/kgBB IV. Antiplatelet: Aspirin 325mg. Statin. Kontrol faktor risiko. Rehabilitasi dini.'},
+{id:'trauma_ms',name:'Trauma Medulla Spinalis + Fraktur Kompresi',years:[2024],ss:'Riwayat trauma. Defisit neurologis bawah level lesi: paraplegia/tetraplegia, gangguan sensorik, disfungsi bladder/bowel. ASIA scale.',dd:'HNP berat, Tumor medula, Myelitis, Perdarahan spinal, Brown-Sequard',tx:'Imobilisasi segera. O2, IVFD. Operasi dekompresi+stabilisasi jika unstable. Rehabilitasi intensif.'},
+{id:'meningoensefalitis',name:'Meningoensefalitis',years:[2024],ss:'Demam tinggi, nyeri kepala hebat, KAKU KUDUK (+), fotofobia, penurunan kesadaran. Kernig/Brudzinski (+). LP: pleositosis, protein tinggi, glukosa rendah.',dd:'Meningitis TB, Abses otak, SAH, Ensefalitis viral, Stroke hemoragik',tx:'Deksametason IV SEBELUM antibiotik. Empiris: Seftriakson 2g/12j + Ampisilin. Viral: Asiklovir IV.'},
+{id:'neuropati_dm',name:'Neuropati Perifer e.c DM Tipe 2',years:[2025],ss:'Kesemutan/rasa terbakar/baal simetris dimulai telapak kaki ("glove and stocking"). Refleks patela/achilles turun. NCS: amplitudo turun, kecepatan hantaran turun.',dd:'Neuropati alkoholik, B12 defisiensi, Hipotiroid, GBS, CKD',tx:'Kontrol glikemik ketat (HbA1c <7%). Pregabalin 2x75mg atau Gabapentin. Amitriptilin 25mg malam. Mekobalamin.'},
+{id:'tarsal_tunnel',name:'Tarsal Tunnel Syndrome',years:[2025],ss:'Nyeri/baal/kesemutan telapak kaki medial dan jari-jari kaki. Tinel sign (+) belakang malleolus medial. Diperberat berdiri lama. NCS: perlambatan saraf tibialis posterior.',dd:'Plantar fasciitis, Neuropati perifer, Ankle sprain, Radikulopati L5-S1',tx:'Orthotik, NSAID, injeksi kortikosteroid lokal, fisioterapi. Gagal: dekompresi bedah saraf tibialis posterior.'},
+],
+psikiatri:[
+{id:'ptsd',name:'PTSD',years:[2022,2023,2025],ss:'Riwayat trauma berat. Re-experiencing: flashback, mimpi buruk. Avoidance: hindari hal terkait trauma. Hyperarousal: mudah kaget, insomnia, iritabel. Gejala >1 bulan.',dd:'GAD, Depresi mayor, Gangguan adaptasi, Acute stress disorder (<1 bulan)',tx:'TF-CBT lini 1, EMDR. Farmakoterapi: Sertralin 50-200mg atau Paroxetin (SSRI). Hindari benzodiazepin jangka panjang.'},
+{id:'baby_blues',name:'Baby Blues / Depresi Postpartum',years:[2023,2025],ss:'Baby blues: mood labil, mudah menangis, kelelahan, 2-3 hari postpartum, <2 minggu, SELF-LIMITING. Depresi PP: depresi mayor >2 minggu postpartum. EPDS ≥13.',dd:'Baby blues vs Depresi PP vs Psikosis PP (bingung, halusinasi - DARURAT). Hipotiroid postpartum.',tx:'Baby blues: suportif, edukasi. Depresi PP: Sertralin (aman ASI) + CBT/IPT. Psikosis PP: rawat inap + antipsikotik.'},
+{id:'gad',name:'Gangguan Cemas (GAD)',years:[2022,2024],ss:'Kecemasan berlebih sulit dikontrol ≥6 bulan tentang berbagai hal. ≥3 dari: gelisah, mudah lelah, sulit konsentrasi, iritabel, tegang otot, gangguan tidur. GAD-7 ≥10.',dd:'Fobia spesifik, PTSD, Gangguan panik, Depresi mayor, Hipertiroid',tx:'CBT lini 1. SSRI: Sertralin/Escitalopram. SNRI: Venlafaksin. Buspiron. Benzodiazepin jangka pendek saja.'},
+{id:'insomnia',name:'Insomnia',years:[2022,2023,2024],ss:'Sulit memulai (early), mempertahankan (middle), atau bangun terlalu awal (late) tidur ≥3 malam/minggu, ≥3 bulan. Dampak pada fungsi siang hari.',dd:'Sleep apnea, Sindrom kaki gelisah, Depresi, Ansietas, Nyeri kronik, Hipotiroid',tx:'CBT-I lini 1. Sleep hygiene, relaksasi, stimulus kontrol. Farmako jangka pendek: Zolpidem 5-10mg.'},
+{id:'hipersomnia',name:'Hipersomnia',years:[2022],ss:'Mengantuk berlebihan siang hari meski tidur malam cukup. Sleep attacks. Singkirkan sleep apnea (snoring, obesitas, OSA), depresi, narkolepsi.',dd:'Narkolepsi, Sleep apnea, Depresi hipersomnik, Efek samping obat, Hipotiroid',tx:'Sleep hygiene ketat. Narkolepsi: Modafinil 200mg pagi. Hindari kerja malam. PSG untuk diagnosis definitif.'},
+{id:'bipolar',name:'Bipolar Episode Kini Depresi',years:[2022],ss:'Riwayat episode manik sebelumnya + saat ini episode depresi (mood depresif, anhedonia, hipersomnia, hiperfagia, psikomotor lambat).',dd:'Depresi unipolar, Siklotimia, ADHD, Skizoafektif, Penggunaan zat',tx:'Mood stabilizer: Lithium atau Asam valproat. JANGAN antidepresan monoterapi. Quetiapine/Lamotrigin untuk fase depresi bipolar.'},
+{id:'disfungsi_seksual',name:'Disfungsi Seksual',years:[2023,2025],ss:'Hiposeksual: libido sangat rendah, distres personal/pasangan. Vaginismus: kontraksi otot vagina involunter mencegah penetrasi. Evaluasi psikologis, hormonal, relasional.',dd:'Depresi, Efek samping SSRI, Hipotiroid, Menopause, Disfungsi ereksi organik',tx:'Psikoterapi seksual/pasangan. Vaginismus: desensitisasi bertahap, dilator vagina, relaksasi panggul.'},
+{id:'tic',name:'Transient Tic Disorder',years:[2023],ss:'Tic motorik dan/atau vokal berulang tidak ritmis, berlangsung <1 tahun. Anak usia sekolah. Diperberat stres, mereda saat tidur.',dd:'Tourette syndrome (>1 tahun, motor+vokal), OCD, ADHD, Chorea',tx:'Edukasi orang tua - sering self-limiting. CBIT (Comprehensive Behavioral Intervention for Tics). Klonidin/Aripiprazol jika mengganggu.'},
+{id:'somatisasi',name:'Gangguan Somatisasi',years:[2024],ss:'Keluhan fisik multipel (nyeri, GI, seksual, neurologi) tanpa dasar organik bermakna. Berulang, distres signifikan, mencari dokter berulang. Onset <30 tahun.',dd:'Penyakit organik belum terdeteksi, Depresi terselubung, Konversi, Hipokondriasis',tx:'Hubungan dokter-pasien konsisten (1 dokter). CBT. SNRI. Hindari prosedur invasif tidak perlu.'},
+{id:'skizoafektif',name:'Skizoafektif Tipe Depresi',years:[2024],ss:'Gejala psikotik (halusinasi/waham) + episode depresi mayor bersamaan, dengan periode psikosis tanpa mood episode ≥2 minggu.',dd:'Skizofrenia + depresi terpisah, Bipolar dengan psikosis, Depresi psikotik',tx:'Antipsikotik + antidepresan. Atau Quetiapine (efektif keduanya). Lithium augmentasi.'},
+{id:'psikotik_akut',name:'Gangguan Psikotik Akut',years:[2024],ss:'Onset psikosis mendadak <1 bulan: halusinasi, waham, bicara kacau. Sering ada stresor. Tidak ada riwayat psikosis sebelumnya.',dd:'Skizofrenia (≥6 bulan), Skizoafektif, Psikosis akibat zat, Ensefalitis, Psikosis postpartum',tx:'Risperidon 2-4mg atau Olanzapin 10mg. Benzodiazepin jika agitasi. Rawat inap. Psikoedukasikeluarga.'},
+{id:'campuran_ansietas',name:'Campuran Ansietas dan Depresi',years:[2025],ss:'Gejala ansietas DAN depresi keduanya ada tapi tidak memenuhi kriteria penuh masing-masing. Sering di layanan primer.',dd:'GAD, Depresi mayor, Distimia, Gangguan penyesuaian, Hipertiroid',tx:'CBT, psikoedukasi. SSRI dosis rendah (Sertralin 25-50mg). Relaksasi, mindfulness.'},
+{id:'depresi_ringan',name:'Depresi Ringan',years:[2025],ss:'≥2 gejala depresi dengan total ≥4 gejala, intensitas ringan, fungsi sosial sedikit terganggu. Durasi ≥2 minggu.',dd:'Distimia, Gangguan adaptasi, Depresi pada penyakit medis, Anemia, Hipotiroid',tx:'CBT/IPT lini 1. Farmako jika tidak respons: SSRI dosis rendah. Aktivitas fisik, dukungan sosial.'},
+],
+indera:[
+{id:'blefaritis',name:'Blefaritis',years:[2022,2024],ss:'Inflamasi kronik tepi kelopak mata. Merah, bersisik, krusta di pangkal bulu mata, gatal, sensasi terbakar. Tipe anterior (stafilokokal/seboroik) atau posterior (disfungsi Meibom).',dd:'Konjungtivitis alergi, Dry eye syndrome, Rosacea okular, Demodex',tx:'Kompres hangat 5-10 menit + masase + bersihkan tepi kelopak 2x/hari. Antibiotik topikal (Eritromisin salep). Posterior: Doksisiklin 2x100mg x6-12 minggu.'},
+{id:'episkleritis',name:'Episkleritis',years:[2022,2023],ss:'Kemerahan segmen episklera, nyeri ringan, visus normal, tidak ada sekret. Penekanan menghilangkan kemerahan (beda skleritis). Bisa unilateral atau bilateral.',dd:'Skleritis (nyeri berat, visus turun), Konjungtivitis, Uveitis anterior, Pterigium meradang',tx:'Self-limiting. NSAID topikal (Ketorolak) atau oral. Kortikosteroid topikal jika berat. Evaluasi penyakit sistemik (RA, SLE).'},
+{id:'dry_eye',name:'Dry Eye Syndrome',years:[2022],ss:'Sensasi terbakar, berpasir, gatal, epifora paradoks. TBUT <10 detik, Schirmer test <5mm/5 menit. Diperberat AC, screen time, usia lanjut.',dd:'Blefaritis, Konjungtivitis alergi, Defisiensi Vit A, Sindrom Sjogren, Rosacea okular',tx:'Air mata buatan (CMC/HA) 4-6x/hari. Omega-3. Cyclosporin topikal jika berat. Kurangi screen time. Humidifier.'},
+{id:'blefarokonj',name:'Blefarokonjungtivitis Bakteri',years:[2024],ss:'Kelopak merah bersisik + mata merah dengan sekret mukopurulen. Gabungan blefaritis dan konjungtivitis bakteri. Pseudomembran (-). Visus normal.',dd:'Konjungtivitis viral, Konjungtivitis alergi, Blefaritis saja, Dakriosistitis',tx:'Antibiotik topikal: Kloramfenikol/Gentamisin tetes 4x/hari x7 hari. Kompres hangat, bersihkan sekret.'},
+{id:'hifema',name:'Hifema Grade II',years:[2024],ss:'Darah dalam COA mengisi 1/3-1/2 setelah trauma tumpul. Visus turun. Nyeri. Risiko TIO meningkat, glaukoma sekunder.',dd:'Hifema grade lain, Uveitis anterior, Iridosiklitis',tx:'Tirah baring kepala 45°, eye shield, tidak mengucek mata. Kortikosteroid topikal. Monitor TIO. Rujuk SpM. Hindari Aspirin/NSAID.'},
+{id:'laserasi_pal',name:'Laserasi Palpebra',years:[2024],ss:'Luka terbuka kelopak mata akibat trauma. Perhatikan keterlibatan margo palpebra, kanalikulus lakrimal (medial), jaringan tarsal.',dd:'Avulsi palpebra, Trauma bola mata, Fraktur orbita',tx:'Eksplorasi, irigasi, debridement minimal. Sederhana: hecting lapis demi lapis. Kanalikulus/full thickness: rujuk SpM. Profilaksis tetanus.'},
+{id:'uveitis',name:'Uveitis Anterior',years:[2023],ss:'Mata merah perikorneal (sirkumkorneal flush), nyeri, fotofobia, visus turun. KP pada endotel, cells & flare di COA, miosis. Umumnya unilateral.',dd:'Glaukoma akut sudut tertutup, Konjungtivitis, Episkleritis, Endoftalmitis',tx:'Kortikosteroid topikal (Prednisolon asetat 1%). Siklopegik (Atropin 1%). Cari penyebab sistemik (HLA-B27, TB, sifilis). Rujuk SpM.'},
+{id:'keratitis',name:'Keratitis Bakteri',years:[2023],ss:'Nyeri mata hebat, fotofobia, blefarospasme, sekret purulen, visus turun. Ulkus kornea dengan infiltrat putih/abu. Pengguna lensa kontak tersering.',dd:'Keratitis HSV (dendritik), Keratitis jamur, Ulkus Mooren, Erosi kornea rekuren',tx:'Antibiotik topikal intensif: Moxifloksasin/Siprofloksasin tetes setiap jam. Siklopegik. TIDAK kortikosteroid awal. Rawat inap jika berat.'},
+{id:'oma_supuratif',name:'OMA (Otitis Media Akut) Supuratif',years:[2022,2025],ss:'Nyeri telinga mendadak, demam, riwayat ISPA. Otoskopi: MT merah, bulging, opak. Stadium supuratif: perforasi MT dengan sekret purulen. Pendengaran turun konduktif.',dd:'OMA serosa, OMSK, Otitis eksterna, Mastoiditis (komplikasi)',tx:'Amoksisilin 3x500mg x7-10 hari. Analgetik. Jika perforasi: AB tetes topikal. Miringotomi jika tidak respons.'},
+{id:'ome',name:'Otitis Media Efusi',years:[2025],ss:'Pendengaran turun TANPA nyeri atau demam. Otoskopi: MT suram, retraksi, air-bubble sign, light reflex hilang. Tympanogram tipe B. Sering pada anak pasca ISPA.',dd:'OMA stadium awal, Disfungsi tuba eustachius, Kolesteatoma',tx:'Watchful waiting 3 bulan. Miringotomi + grommet jika persisten >3 bulan atau bilateral.'},
+{id:'miringitis',name:'Miringitis Bullosa',years:[2023],ss:'Nyeri telinga mendadak sangat hebat, demam, bulla hemoragik pada membran timpani dan liang telinga medial. Pendengaran sedikit turun. Sering bersamaan influenza.',dd:'OMA, Otitis eksterna bulosa, Ramsay Hunt (Herpes zoster otikus)',tx:'Analgetik kuat (NSAID/opioid). Antibiotik (Amoksisilin-klavulanat). Bulla dapat dipecah untuk mengurangi nyeri.'},
+{id:'mastoiditis',name:'Mastoiditis ec OMSK',years:[2023],ss:'Nyeri/pembengkakan retroaurikuler, aurikula terdorong ke depan-bawah. Demam, sekret purulen kronik. CT mastoid: erosi mastoid. Komplikasi OMSK.',dd:'Adenitis retroaurikuler, Abses retroaurikuler, Selulitis, Parotitis',tx:'Rawat inap. Seftriakson 2g/24j IV. Mastoidektomi segera. Drainase abses jika ada.'},
+{id:'rhinitis_alergi',name:'Rhinitis Alergi',years:[2022],ss:'Bersin berulang, rhinorrhea encer, hidung tersumbat, gatal hidung/mata. Dipicu alergen. Sering disertai konjungtivitis. Skin prick test (+).',dd:'Rhinitis vasomotor, Rhinitis infeksi, Polip nasal',tx:'Hindari alergen. Antihistamin oral generasi 2 (Loratadin/Cetirizin). Steroid intranasal (Flutikason) - paling efektif.'},
+{id:'rhinitis_vasomotor',name:'Rhinitis Vasomotor',years:[2023],ss:'Hidung tersumbat dan rhinorrhea tanpa penyebab alergi/infeksi. Dipicu perubahan suhu, bau, asap, stres. Tes alergi negatif.',dd:'Rhinitis alergi (skin test +), Rhinitis medikamentosa, Polip nasal',tx:'Hindari trigger. Ipratropium bromida topikal. Salin nasal. Dekongestan max 5 hari.'},
+{id:'miopia',name:'Miopia',years:[2025],ss:'Kabur melihat jauh, jelas melihat dekat. Axis bola mata terlalu panjang. Dikoreksi dengan lensa sferis negatif (konkaf).',dd:'Presbiopia, Astigmatisme, Anisometropia, Ambliopia',tx:'Kacamata lensa sferis negatif. Lensa kontak. Lasik jika ≥18 tahun dan refraksi stabil.'},
+{id:'presbiopia',name:'Presbiopia',years:[2025],ss:'Pandangan dekat kabur pada usia ≥40 tahun. Perlu memperpanjang lengan untuk membaca (arm-length reading). Penurunan elastisitas lensa.',dd:'Hipermetropia, Katarak stadium awal',tx:'Kacamata baca lensa sferis positif (+1.0 s/d +3.0 sesuai usia). Kacamata bifokal/progresif jika ada kelainan refraksi lain.'},
+{id:'astigmatisme',name:'Astigmatisme',years:[2025],ss:'Penglihatan kabur/distorsi semua jarak. Kornea tidak sferis (torik). Mata cepat lelah, sakit kepala. Dikoreksi dengan lensa silindris.',dd:'Miopia, Hipermetropia, Keratokonus, Astigmatisme ireguler',tx:'Kacamata lensa silindris. Lensa kontak torik. Lasik/PRK untuk astigmatisme reguler.'},
+],
+respirasi:[
+{id:'asma',name:'Asma',years:[2022],ss:'Mengi episodik, sesak napas, dada berat, batuk terutama malam/dini hari. Reversibel dengan bronkodilator. Riwayat atopi. Uji bronkodilator: VEP1 naik ≥12%.',dd:'PPOK, Gagal jantung (cardiac asthma), Bronkiolitis anak, Benda asing',tx:'Ringan: SABA inhalasi (Salbutamol). Sedang-berat: SABA + kortikosteroid sistemik + oksigen. Pemeliharaan: ICS ± LABA.'},
+{id:'ppok',name:'PPOK Eksaserbasi Akut',years:[2022,2023,2024],ss:'Riwayat PPOK (merokok, batuk produktif kronis). Eksaserbasi: naik dispnea, naik volume/purulensi sputum (Anthonisen). SpO2 turun. Barrel chest, hipersonor, suara napas turun.',dd:'Gagal jantung akut, Pneumonia, Pneumotoraks, Emboli paru',tx:'O2 terkontrol (SpO2 88-92%). SABA+SAMA nebulisasi. Prednison 40mg/hari x5 hari. Antibiotik jika infeksi. Pertimbangkan NIPPV.'},
+{id:'pneumotoraks',name:'Pneumotoraks Spontan',years:[2023],ss:'Nyeri dada pleuritik mendadak + sesak. Pria muda kurus (primer) atau PPOK (sekunder). Suara napas turun, perkusi hipersonor. Foto: garis pleura tanpa vascular marking. Tension: trakea terdorong.',dd:'Emboli paru, Pleuritis, Efusi pleura, Infark miokard, Pneumonia',tx:'Kecil/stabil: observasi + O2 100%. Besar/simtomatik: aspirasi jarum atau WSD. TENSION (darurat): dekompresi jarum ICS 2 MCL segera.'},
+{id:'efusi_pleura',name:'Efusi Pleura Masif',years:[2023],ss:'Sesak progresif, nyeri dada pleuritik. Perkusi redup, suara napas turun/hilang, fremitus turun. Trakea terdorong kontralateral jika masif. Foto: opasitas homogen dengan meniskus sign.',dd:'CHF, TB pleura, Keganasan, Pneumonia, Sirosis, Hipoalbuminemia',tx:'O2. Torakosentesis diagnostik+terapeutik (max 1-1.5L/sesi). Analisis Light criteria. Tatalaksana penyebab.'},
+{id:'edema_paru',name:'Edema Paru Akut',years:[2023],ss:'Sesak mendadak berat, orthopnea, PND, batuk berdahak merah muda berbusa. Ronki basah bilateral, S3 gallop. SpO2 turun. Foto: butterfly pattern, Kerley B lines.',dd:'Pneumonia bilateral, ARDS, Efusi pleura bilateral, Asma berat',tx:'Duduk tegak. O2 high-flow (CPAP/BiPAP). Furosemid IV 40-80mg. Nitrat SL/IV. Morfin 2-4mg IV hati-hati.'},
+{id:'bronkiolitis',name:'Bronkiolitis',years:[2023],ss:'Anak <2 tahun (paling sering <6 bulan). Demam ringan, rinitis, batuk, MENGI, sesak. SpO2 bisa turun. RSV penyebab tersering. Musim hujan.',dd:'Asma infant (>3 episode), Pneumonia aspirasi, Croup, Pertussis, Gagal jantung',tx:'Suportif: O2 (SpO2 >95%), IVFD, posisi semi-fowl. NaCl 3% nebulisasi (bukti terbatas). Epinefrin nebulisasi jika berat. Antibiotik TIDAK rutin.'},
+{id:'pneumonia_aspirasi',name:'Pneumonia Aspirasi',years:[2023],ss:'Riwayat aspirasi (stroke, disfagia, alkohol, penurunan kesadaran). Infiltrat segmen posterior lobus atas atau basal lobus bawah. Demam, batuk, sputum berbau.',dd:'Pneumonia CAP biasa, Abses paru, TB paru, Atelektasis',tx:'AB anaerob + gram negatif: Amoksisilin-klavulanat atau Klindamisin+Siprofloksasin. Rawat inap. Fisioterapi dada.'},
+{id:'abses_peritonsiler',name:'Abses Peritonsiler',years:[2024],ss:'Nyeri tenggorok unilateral hebat, disfagia, TRISMUS, uvula terdorong kontralateral, tonsil membengkak asimetris, "hot potato voice". Komplikasi tonsilitis.',dd:'Tonsilitis berat, Parafaring abses, Epiglotitis, Angina Ludwig',tx:'INSISI DAN DRAINASE. Penisilin G IV atau Ampisilin-sulbaktam. Analgetik. Tonsillektomi setelah infeksi mereda.'},
+{id:'laringitis',name:'Laringitis',years:[2024],ss:'Suara serak/afonia, tenggorokan gatal/nyeri, batuk kering. Setelah ISPA atau penggunaan suara berlebihan. Laring: eritema, edema pita suara.',dd:'LTB/croup (anak, stridor berat), Tumor laring, Epiglotitis, GERD laringitis',tx:'Istirahat suara absolut. Uap hangat. Parasetamol. Kortikosteroid oral jika edema. Hindari berbisik.'},
+{id:'faringitis',name:'Faringitis',years:[2024],ss:'Nyeri tenggorok, odinofagia, demam. Faring eritematosa, eksudat tonsil (bakteri), limfadenopati servikal anterior. Centor score untuk prediksi Streptokokus.',dd:'Tonsilitis, Mononukleosis infeksiosa (EBV), Difteri, Epiglotitis',tx:'Viral: suportif (analgetik, gargling air garam). Bakteri (Centor ≥3): Amoksisilin 3x500mg x10 hari.'},
+{id:'tb_hiv',name:'TB Paru + Susp. HIV',years:[2024],ss:'Batuk kronis >2 minggu, dahak darah, demam, keringat malam, BB turun. Foto: infiltrat/kavitas apeks. BTA (+). Candidiasis oral, limfadenopati multipel: curigai HIV. CD4 <200: TB milier.',dd:'Pneumonia CAP, Keganasan paru, PPOK eksaserbasi, Aspergillosis',tx:'OAT Kategori I: 2RHZE/4RH. Kotrimoksazol profilaksis jika HIV (+). ARV mulai 2-8 minggu setelah OAT (CD4 <50: segera).'},
+{id:'pertusis',name:'Pertusis',years:[2024],ss:'Batuk paroksismal dengan inspirasi "WHOOP", post-tussive vomiting, wajah kebiruan, bisa apnea pada bayi. Fase kataral (2 minggu) → paroksismal → konvalesen.',dd:'Bronkiolitis, Asma, Benda asing, Croup, Infeksi Mycoplasma/Chlamydia',tx:'Azitromisin 10mg/kgBB/hari x5 hari. Isolasi. Profilaksis kontak: Azitromisin. Vaksin DTP pencegahan.'},
+],
+kardio:[
+{id:'hipertensi',name:'Hipertensi',years:[2022],ss:'TD ≥140/90 mmHg pada ≥2 pengukuran berbeda. Sering asimtomatik. Krisis: nyeri kepala oksipital, penglihatan kabur, epistaksis. Cari kerusakan organ target.',dd:'Hipertensi sekunder (renal, endokrin), White coat hypertension',tx:'Modifikasi gaya hidup. Farmako: ACEi/ARB (+ DM/CKD), CCB (lansia), Tiazid. Kombinasi jika perlu. Target <130/80 mmHg.'},
+{id:'af',name:'Atrial Fibrilasi (AF)',years:[2022,2025],ss:'Palpitasi, sesak, nyeri dada. Nadi IREGULER IREGULER. EKG: tidak ada gelombang P, RR ireguler, baseline bergelombang. Risiko stroke (CHA2DS2-VASc).',dd:'Flutter atrial, Takikardia multifokal, Ekstrasistol sering',tx:'Kontrol laju: Beta bloker atau CCB. Kontrol irama: Amiodaron/kardioversi (<48j). Antikoagulasi: Warfarin (INR 2-3) atau NOAC jika CHA2DS2-VASc ≥2.'},
+{id:'svt',name:'SVT (Supraventrikular Takikardi)',years:[2022,2023],ss:'Palpitasi onset mendadak, denyut 150-250x/menit, reguler. EKG: QRS sempit, gelombang P mungkin tersembunyi. Paroksismal, bisa terminasi spontan.',dd:'AF dengan konduksi cepat, Flutter atrial 2:1, VT (QRS lebar), Sinus takikardi',tx:'Vagal manuver (Valsalva modifikasi). Adenosin 6mg IV bolus cepat lini 1. Verapamil/Diltiazem IV. Tidak stabil: kardioversi sinkronisasi.'},
+{id:'stemi',name:'STEMI',years:[2022],ss:'Nyeri dada khas ≥20 menit, menjalar lengan kiri/rahang. EKG: elevasi ST ≥1mm di ≥2 sadapan berturutan atau LBBB baru. Troponin naik.',dd:'NSTEMI (tidak ada elevasi ST), UAP, Perikarditis akut, Diseksi aorta, Emboli paru',tx:'MONA: Morfin, O2 (SpO2<90%), Nitrat SL, Aspirin 300mg. Reperfusi: PCI primer <90 menit atau fibrinolisis <3 jam. Heparin, Clopidogrel, Statin.'},
+{id:'uap',name:'UAP (Unstable Angina Pectoris)',years:[2022],ss:'Angina baru, saat istirahat, atau meningkat frekuensi/intensitas. EKG: bisa normal atau depresi ST/inversi T. TROPONIN NORMAL (beda NSTEMI).',dd:'NSTEMI (troponin naik), STEMI, Perikarditis, Esofagospasme, Kostokondritis',tx:'Rawat inap, monitoring EKG. Aspirin+Clopidogrel, Heparin IV/LMWH, Nitrat, Beta bloker. TIMI score. Koronarografi elektif.'},
+{id:'pvc',name:'PVC (Premature Ventricular Contraction)',years:[2022],ss:'Palpitasi "jantung berdegup kuat" atau "jantung berhenti sebentar". EKG: QRS lebar prematur tanpa P sebelumnya, gelombang T berlawanan, pause kompensatorik.',dd:'PAC (QRS sempit), Konduksi aberan, VT (jika ≥3 berurutan), Artefak',tx:'PVC simtomatik: Beta bloker atau CCB. Singkirkan penyebab (elektrolit, kafein, stres, iskemia). Umumnya jinak.'},
+{id:'vfib',name:'VFib + RJP',years:[2023],ss:'Tidak ada nadi + tidak ada napas normal. EKG: gelombang fibrilasi ireguler kaotik. Henti jantung mendadak. Segera RJP!',dd:'VT pulseless, Asistol, PEA (Pulseless Electrical Activity)',tx:'RJP segera 30:2, kedalaman 5-6cm, 100-120x/menit. Defibrilasi 200J (bifasik) segera. Epinefrin 1mg IV tiap 3-5 menit. Amiodaron 300mg. Atasi 4H4T.'},
+{id:'bradikardia',name:'Sinus Bradikardia',years:[2023],ss:'Denyut <60x/menit, irama reguler, P sebelum QRS normal. Bisa asimtomatik (atlet) atau simtomatik (pusing, sinkop, sesak).',dd:'Blok AV (PR memanjang), Sick sinus syndrome, Efek obat (beta bloker, digoksin)',tx:'Asimtomatik: observasi. Simtomatik: Atropin 0.5mg IV, ulangi max 3mg. Tidak respons: pacu jantung sementara.'},
+{id:'cvi',name:'CVI (Chronic Venous Insufficiency)',years:[2024],ss:'Kaki berat, edema tungkai bawah memburuk sore hari. Varises, lipodermatosklerosis, hiperpigmentasi, eczema stasis. Ulkus vena di malleolus medial.',dd:'DVT, Insufisiensi arteri, Edema kardiak/renal, Limfedema',tx:'Stocking kompresi 30-40 mmHg. Elevasi kaki. Diosmin+Hesperidin. Ulkus: kompresi 4-layer, perawatan luka. Bedah/skleroterapi untuk varises.'},
+{id:'tromboflebitis',name:'Tromboflebitis Superfisial',years:[2024,2025],ss:'Kemerahan, nyeri, hangat, teraba korda keras sepanjang vena superfisial di tungkai bawah. Riwayat varises, imobilisasi, IV line. Low-grade fever.',dd:'DVT (lebih dalam, tungkai bengkak difus), Selulitis, Limfangitis, Noda kulit',tx:'NSAID oral + topikal. Kompres hangat. Stocking kompresi. Enoksaparin profilaksis jika dekat vena dalam atau >5cm.'},
+{id:'limfangitis',name:'Limfangitis',years:[2024,2025],ss:'Garis merah mengikuti aliran limfe dari luka terinfeksi ke KGB regional. Hangat, nyeri, demam, limfadenopati regional. Streptokokus penyebab utama.',dd:'Tromboflebitis superfisial, Selulitis, Erisipelas, AEFI pasca vaksin',tx:'Amoksisilin 3x500mg atau Diklosasilin. Berat: Penisilin G IV. Rawat luka primer. Elevasi ekstremitas. Kompres hangat.'},
+],
+gastro:[
+{id:'appendisitis',name:'Appendisitis Akut',years:[2022,2023,2025],ss:'Nyeri migrasi periumbilikal → RLQ. Demam subfebris, mual, muntah. McBurney (+), Rovsing (+), Psoas (+), Blumberg (+). Leukositosis. Alvarado ≥7.',dd:'Kolik ureter, KET, Kista ovarium terpuntir, Adenitis mesenterika, Crohn',tx:'Appendektomi (laparoskopi/terbuka). Antibiotik preoperatif: Sefazolin IV. Perforasi: Metronidazol+Seftriakson+drainase.'},
+{id:'gerd',name:'GERD',years:[2023,2025],ss:'Heartburn (rasa terbakar retrosternal), regurgitasi, memburuk setelah makan/berbaring. Gejala ekstraesofageal: batuk kronik, laringitis. Alarm: disfagia, penurunan BB.',dd:'Ulkus peptikum, Angina pektoris, Spasme esofagus, Dispepsia fungsional',tx:'Modifikasi gaya hidup: hindari makanan asam/berlemak, tinggikan kepala, turunkan BB. PPI: Omeprazol 2x20mg x4-8 minggu.'},
+{id:'tifoid',name:'Demam Tifoid',years:[2022],ss:'Demam STEPLADDER (naik bertahap 1 minggu), relatif bradikardia, lidah tifoid (putih kotor tepi hiperemis), meteorismus, konstipasi. Widal O/H ≥1/320. IgM tifoid (+).',dd:'Malaria, Leptospirosis, Dengue, ISK, Hepatitis A akut',tx:'Kloramfenikol 4x500mg x14 hari atau Siprofloksasin 2x500mg x10-14 hari atau Seftriakson IV. Diet lunak. Tirah baring.'},
+{id:'hepatitis_a',name:'Hepatitis A',years:[2022],ss:'Demam, mual, muntah, IKTERUS, urin gelap seperti teh, feses pucat. Hepatomegali nyeri tekan. IgM anti-HAV (+). SGOT/SGPT naik sangat tinggi.',dd:'Hepatitis B/C/E akut, Kolestasis, EBV, Hemolisis, Obstruksi biliaris',tx:'Suportif: istirahat, diet cukup kalori, hindari alkohol/hepatotoksik. Self-limiting 4-8 minggu. Vaksinasi kontak serumah.'},
+{id:'disentri',name:'Disentri Ameba',years:[2022],ss:'Diare berdarah berlendir, nyeri perut kram, TENESMUS, demam ringan. Trofozoit E.histolytica (+) pada mikroskop tinja. Bisa berkembang menjadi abses hepar.',dd:'Disentri basiler (Shigella - lebih akut, demam tinggi), IBD, Colitis iskemik',tx:'Metronidazol 3x500mg x7-10 hari. Lanjutkan Paromomycin/Diloksanida furoat untuk eradikasi kista. Rehidrasi.'},
+{id:'kandidiasis_oral',name:'Kandidiasis Oral',years:[2022],ss:'Plak putih seperti keju yang dapat DIANGKAT meninggalkan dasar merah eritem. Mukosa mulut, lidah, palatum. Terbakar/nyeri. KOH: pseudohifa dan spora.',dd:'Leukoplakia (tidak bisa diangkat), Stomatitis aphthous, Difteri faring, Geographic tongue',tx:'Nistatin suspensi 4x1-2 mL berkumur-telan x7 hari. Imunokompromis: Flukonazol 1x150mg x7-14 hari. Cari penyebab (DM, HIV, AB kronik).'},
+{id:'hemoroid',name:'Hemoroid Interna',years:[2023],ss:'Perdarahan segar saat BAB (menetes/menyemprot), prolaps, pruritus ani. Grade I-IV berdasarkan prolaps. Tidak nyeri kecuali trombosis.',dd:'Fisura ani, Polip rektum, Ca kolorektum, Proktitis',tx:'Grade I-II: konservatif (diet tinggi serat, skleroterapi/rubber band ligation). Grade III-IV: hemoroidektomi.'},
+{id:'peritonitis',name:'Peritonitis',years:[2023,2024],ss:'Nyeri abdomen DIFUS, DEFANS MUSKULAR (+), rigiditas dinding perut, bising usus turun/hilang. Demam tinggi, takikardia. Foto: udara bebas subdiafragma (perforasi).',dd:'Appendisitis perforasi, Ulkus perforasi, Perforasi usus, Kolesistitis perforasi',tx:'Puasa, NGT dekompresi, IVFD kristaloid cepat. Antibiotik broad spectrum IV. Laparotomi eksplorasi segera.'},
+{id:'intususepsi',name:'Intususepsi',dd:'Volvulus, Ileus, Gastroenteritis, Invaginasi dewasa (tumor)',tx:'Anak: reduksi hidrostatik (enema barium/udara/NaCl) USG-guided - keberhasilan 70-90%. Gagal atau peritonitis: operasi.',years:[2024],ss:'Anak 6 bulan-3 tahun. Nyeri perut KOLIK episodik paroksismal, muntah, BAB berdarah seperti "jelly kismis" (current jelly stool). Massa sosis di RUQ. USG: target sign.'},
+{id:'ruptur_varises',name:'Ruptur Varises Esofagus',years:[2024],ss:'HEMATEMESIS MASIF tiba-tiba pada pasien sirosis/hipertensi portal. Melena. Syok hemodinamik. Riwayat alkohol, hepatitis kronik. Spider nevi, asites, splenomegali.',dd:'Ulkus peptikum berdarah, Mallory-Weiss tear, Gastropati hipertensi portal, Ca esofagus',tx:'Resusitasi IVFD (NGT untuk monitoring). Terlipressin/Oktreotid IV. Endoskopi (ligasi/skleroterapi) segera. Antibiotik profilaksis (Norfloksasin). TIPS jika gagal.'},
+{id:'abses_perianal',name:'Abses Perianal / Fistula Ani',years:[2025],ss:'Nyeri hebat perirektal terus-menerus, bengkak, kemerahan, fluktuasi perianal. Demam. Fistula: sekret kronik perianal, lubang eksternal teraba.',dd:'Hemoroid trombosis, Pilonidal sinus, Hidradenitis supurativa, Crohn perianal',tx:'Abses: INSISI DAN DRAINASE segera. AB jika selulitis luas. Fistula: fistulektomi/seton setelah peradangan mereda.'},
+{id:'hernia',name:'Hernia Inguinalis',years:[2025],ss:'Benjolan lipat paha, membesar saat berdiri/mengejan, mengecil/hilang saat berbaring. Inkarserata: tidak bisa dikembalikan + nyeri. Strangulata: iskemia usus.',dd:'Lipoma, Limfadenopati inguinal, Hidrokel, Kriptorkismus, Femoral hernia',tx:'Elektif: herniorafi/hernioplasti (Lichtenstein mesh). Inkarserata/strangulata: OPERASI DARURAT.'},
+{id:'abses_hepar',name:'Abses Hepar ec E.histolytica',years:[2025],ss:'Demam, nyeri RUQ, hepatomegali nyeri tekan. Sering TANPA riwayat disentri jelas. USG: lesi hipoekhoik/anechoic. IgM/IgG ameba (+).',dd:'Abses hepar piogenik (bakteri - multilokulasi, lebih toksik), Kista hepar, HCC nekrotik',tx:'Metronidazol 3x750mg x10 hari + Diloksanida furoat 3x500mg x10 hari. Drainase perkutan jika >5cm atau tidak respons.'},
+{id:'fimosis',name:'Fimosis (Sirkumsisi)',years:[2023,2025],ss:'Preputium tidak bisa diretraksi ke proksimal glans. Fisiologis: bayi ≤3 tahun. Patologis: >3 tahun, BXO, infeksi rekuren, nyeri, retensi urin.',dd:'Parafimosis (darurat), BXO, Balanoposthitis, Stenosis meatal',tx:'Konservatif: Betametason topikal x4-8 minggu + retraksi pelan. Gagal/komplikasi: sirkumsisi.'},
+{id:'parafimosis',name:'Parafimosis (Dorsumsisi)',years:[2025],ss:'Preputium terjebak di proksimal glans setelah retraksi, tidak bisa dikembalikan. Edema glans progresif, sangat nyeri, iskemia. DARURAT urologi.',dd:'Fimosis, Edema glans karena trauma, Infiltrat tumor',tx:'Reduksi manual segera: kompres es 15 menit, tekan glans kuat sambil dorong preputium ke distal. Gagal: DORSUMSISI DARURAT. Setelah sembuh: sirkumsisi elektif.'},
+],
+ginjal:[
+{id:'gnaps',name:'GNAPS',years:[2022,2024],ss:'Hematuria makroskopik (urin cola/merah), edema periorbita pagi, hipertensi, oliguria. Riwayat ISPA/infeksi kulit streptokokus 1-3 minggu lalu. ASTO naik, C3 turun, eritrosit disformik.',dd:'Sindrom nefrotik, IgA nephropathy, Lupus nefritis, Nefritis herediter (Alport)',tx:'Tirah baring, diet rendah garam-protein. Amlodipine antihipertensi. Furosemid jika edema/oliguria. Penisilin 10 hari. Self-limiting 2-4 minggu.'},
+{id:'pielonefritis',name:'Pielonefritis Akut',years:[2022,2024],ss:'Demam tinggi mendadak, menggigil, CVA TENDERNESS (+), disuria, frekuensi. Urinalisis: leukosituria, bakteriuria, cast leukosit. WBC naik.',dd:'Sistitis, Appendisitis, Kolik ureter, Abses perinefrik',tx:'Seftriakson 1-2g/24j IV atau Siprofloksasin 2x500mg oral x7-10 hari. IVFD, analgetik, antipiretik. Rawat inap jika berat.'},
+{id:'sistitis',name:'Sistitis',years:[2022,2025],ss:'Disuria, polakisuria, urgency, nyeri suprapubik. TIDAK ada demam tinggi atau CVA tenderness. Urinalisis: leukosituria, bakteriuria, nitrit (+).',dd:'Pielonefritis (ada demam+CVA), Uretritis, Vulvovaginitis, Kandidiasis',tx:'Kotrimoksazol 2x960mg x3 hari atau Siprofloksasin 2x500mg x3 hari atau Nitrofurantoin x7 hari. Minum banyak air.'},
+{id:'nefrolitiasis',name:'Nefrolitiasis / Ureterolitiasis',years:[2022],ss:'KOLIK (nyeri pinggang mendadak hebat menjalar ke selangkangan/genitalia), hematuria, mual. CVA tenderness (+). USG/CT urografi: batu saluran kemih.',dd:'Kolik bilier, Pielonefritis, Appendisitis, KET, Aneurisma aorta',tx:'Analgetik: NSAID (Ketorolak IM) atau opioid. Hidrasi. Tamsulosin (expulsive therapy batu <10mm). Batu >10mm: ESWL atau ureteroskopi.'},
+{id:'ruptur_ginjal',name:'Ruptur Ginjal ec Trauma',years:[2022],ss:'Riwayat trauma abdomen/pinggang. Nyeri pinggang, HEMATURIA (tanda khas), ekimosis flank (Grey Turner sign). CT kontras: GOLD STANDARD grading AAST.',dd:'Kontusio ginjal, Trauma lien, Trauma hepar, Ruptur ureter',tx:'Grade I-III: konservatif (bed rest, monitoring). Grade IV-V atau hemodinamik tidak stabil: operasi atau embolisasi angiografi.'},
+{id:'sindrom_nefritik',name:'Sindrom Nefritik',years:[2024],ss:'Hematuria, proteinuria ringan-sedang, hipertensi, edema, oliguria. Silinder eritrosit. Berbeda sindrom nefrotik: proteinuria masif >3.5g/hari, edema berat, hipoalbuminemia.',dd:'GNAPS, IgA nephropathy, Lupus nefritis, Nefritis herediter, Vaskulitis ANCA',tx:'Tergantung penyebab. Umum: tirah baring, diet rendah garam, diuretik, antihipertensi. Biopsi ginjal untuk diagnosis definitif.'},
+{id:'prostatitis',name:'Prostatitis',years:[2024],ss:'Nyeri perineum/suprapubik, disuria, frekuensi, DEMAM (akut). Colok dubur: prostat nyeri tekan, hangat, lunak (akut). Urin/EPS: leukosituria, bakteriuria.',dd:'BPH, Ca prostat, ISK, Epididimo-orchitis, Abses prostat',tx:'Siprofloksasin 2x500mg atau Kotrimoksazol x28 hari. Berat/abses: rawat inap, AB IV. Analgetik, alpha bloker.'},
+{id:'uretritis_go',name:'Uretritis Gonore',years:[2024],ss:'Sekret uretra PURULEN kuning-hijau, disuria, uretra terbakar. Inkubasi 2-7 hari setelah kontak seksual. Gram: diplokokus gram negatif intraseluler. Kultur Thayer-Martin (+).',dd:'Uretritis non-gonore (Klamidia - sekret mukoid, lebih ringan), Sistitis, Prostatitis',tx:'Seftriakson 500mg IM dosis tunggal + Azitromisin 1g oral. Notifikasi pasangan. Skrining IMS lain (HIV, sifilis).'},
+],
+obgyn:[
+{id:'pap_smear',name:'PAP Smear / Skrining Kanker Serviks',years:[2022],ss:'Skrining perempuan seksual aktif ≥21 tahun. Hasil Bethesda: Normal, ASC-US, LSIL, HSIL, Karsinoma. Mulai 3 tahun setelah aktif seksual.',dd:'Servisitis, Infeksi HPV, CIN I/II/III, Adenokarsinoma serviks',tx:'Teknik: spekulum → usap ektoserviks (spatula) + endoserviks (cytobrush) → apus kaca objek → fiksasi alkohol 95%. Hasil abnormal: kolposkopi + biopsi.'},
+{id:'bv',name:'Bakterial Vaginosis (BV)',years:[2022,2024],ss:'Sekret vagina abu-abu homogen BERBAU AMIS (fishy odor) terutama post-koitus. pH vagina >4.5. Clue cells (+). Whiff test (+) dengan KOH 10%. Kriteria Amsel ≥3/4.',dd:'Kandidiasis (sekret putih bergumpal, gatal), Trikomoniasis (kuning berbusa), Servisitis',tx:'Metronidazol 2x500mg x7 hari atau gel vagina 0.75% x5 hari atau Klindamisin krim vagina x7 hari. Tidak perlu terapi pasangan.'},
+{id:'ca_serviks',name:'Susp. Ca Serviks (IVA Test)',years:[2022],ss:'Perdarahan vagina pasca-senggama atau intermenstrual. Sekret berbau. IVA test: lesi ACETOWHITE pada serviks. Stadium awal sering asimtomatik. HPV high-risk.',dd:'Ektropion serviks, Servisitis, Polip serviks, Ca endometrium',tx:'IVA positif: biopsi konfirmasi → terapi sesuai stadium. CIN II-III: LEEP/konisasi. Kanker invasif: histerektomi radikal/radioterapi/kemoterapi.'},
+{id:'abortus_imminens',name:'Abortus Imminens',years:[2022],ss:'Perdarahan vagina sedikit + kram pada kehamilan <20 minggu. OUE TERTUTUP. USG: janin masih hidup, DJJ (+). Ancaman keguguran tapi kehamilan bisa dipertahankan.',dd:'Abortus insipiens (OUE terbuka), KET, Abortus inkomplit, Mola hidatidosa',tx:'Tirah baring. Progesteron suportif (Dydrogesterone/Micronized progesteron). Hindari aktivitas seksual. Follow-up USG serial.'},
+{id:'peb',name:'PEB (Preeklamsia Berat) - ANC',years:[2023],ss:'TD ≥160/110 mmHg pada ≥20 minggu kehamilan. Proteinuria ≥300mg/24j. Nyeri kepala, gangguan visus, nyeri epigastrik. HELLP syndrome.',dd:'Hipertensi kronik, Eklamsia (sudah kejang), Lupus nefritis, Sindrom antifosfolipid',tx:'MgSO4 4g IV bolus loading, lanjut 1g/jam (cegah kejang). Nifedipin/Labetalol antihipertensi. Terminasi ≥34 minggu atau kondisi tidak stabil.'},
+{id:'anemia_anc',name:'Anemia Def. Besi pada Kehamilan - ANC',years:[2023],ss:'Hb <11g/dL (trimester 1&3) atau <10.5g/dL (trimester 2). Lemah, pusing, pucat, takikardia. MCV turun, ferritin turun, TIBC naik. Risiko BBLR, partus prematur.',dd:'Anemia defisiensi folat (MCV naik), Anemia penyakit kronik, Talasemia, Anemia hemolitik',tx:'Ferrous sulfat 3x200mg/hari (terapi) atau 1x200mg/hari (profilaksis) + Vit C. Folat 400-800mcg/hari. Monitor Hb tiap 4 minggu.'},
+{id:'endometritis',name:'Endometritis',years:[2023],ss:'DEMAM POSTPARTUM, nyeri uterus tekan, lokia berbau busuk/purulen setelah persalinan (hari 2-3). Riwayat seksio atau KPSW. Uterus subinvolusi.',dd:'ISK, Mastitis, Tromboflebitis septik pelvis, Abses pelvis, Wound infection',tx:'Gentamisin + Klindamisin IV atau Ampisilin-sulbaktam. Perbaikan setelah 72 jam: switch oral. Kuretase jika ada sisa plasenta.'},
+{id:'abortus_komplik',name:'Abortus Komplit Spontan',years:[2023],ss:'Semua hasil konsepsi telah keluar. Perdarahan berhenti/berkurang. OUE TERTUTUP kembali. Uterus mengecil. USG: kavum uteri kosong. Nyeri kram mereda.',dd:'Abortus inkomplit (OUE terbuka, masih ada sisa), Abortus mola, KET',tx:'Observasi ketat. Tidak perlu evakuasi jika USG bersih. Analgetik jika perlu. Edukasi tanda bahaya.'},
+{id:'pid',name:'PID (Pelvic Inflammatory Disease)',years:[2023,2024],ss:'Nyeri abdomen bawah bilateral + CMT (CERVICAL MOTION TENDERNESS) + nyeri adneksa. Demam, sekret vagina purulen. Kriteria Hager.',dd:'Appendisitis, KET, Kista ovarium terpuntir, Endometriosis, ISK',tx:'Rawat jalan: Seftriakson 500mg IM + Doksisiklin 2x100mg x14 hari + Metronidazol x14 hari. Rawat inap: Sefoksitik IV+Doksisiklin. Terapi pasangan.'},
+{id:'salpingitis',name:'Salpingitis',years:[2024],ss:'Nyeri adneksa unilateral/bilateral, demam, keputihan purulen. Teraba massa adneksa (abses tuba-ovarium). Komplikasi PID. Nyeri goyang serviks (+).',dd:'Appendisitis, KET, Kista ovarium terpuntir, Endometriosis',tx:'Sama dengan PID berat. Abses tuba-ovarium: drainase perkutan USG-guided atau laparoskopi.'},
+{id:'mastitis',name:'Mastitis / Breast Engorgement',years:[2025],ss:'Mastitis: payudara merah, nyeri, hangat, keras, DEMAM >38.5°C, umumnya minggu 2-4 postpartum. Engorgement: penuh, berat, TIDAK ada demam. Fluktuasi: abses.',dd:'Abses payudara (perlu drainase), Galaktokel, Karsinoma inflamasi',tx:'Mastitis: lanjutkan menyusui/memompa, Amoksisilin-klavulanat 3x625mg x10-14 hari, kompres hangat. Engorgement: keluarkan ASI sering, kompres dingin. Abses: insisi-drainase.'},
+{id:'anc_risiko',name:'ANC Kehamilan Risiko Tinggi (Letak Sungsang)',years:[2025],ss:'Letak lintang/sungsang (letling) pada usia gestasi 33-34 minggu. USG: presentasi bokong/bahu. G2P1A0 - evaluasi riwayat persalinan. Monitor kesejahteraan janin.',dd:'Letak normal belum engaged, Mioma uteri, Plasenta previa, Panggul sempit',tx:'Versi luar (ECV) ab 36-37 minggu jika tidak ada kontraindikasi. Gagal ECV: SC elektif. Senam hamil/posisi knee-chest untuk sungsang.'},
+{id:'bartholinitis',name:'Bartholinitis / Abses Bartolin',years:[2025],ss:'Benjolan nyeri di labia mayora posterior, merah, hangat, FLUKTUATIF. Unilateral. Nyeri saat berjalan/duduk. Kista Bartolin tanpa infeksi: tidak nyeri.',dd:'Kista Bartolin (tidak nyeri, tidak merah), Abses perianal, Lipoma terinfeksi',tx:'Insisi-drainase atau Word catheter x4-6 minggu (mencegah rekurensi). AB: Amoksisilin-klavulanat x7 hari. Marsupialisasi untuk kasus rekuren.'},
+{id:'cracked_nipple',name:'Cracked Nipple',years:[2025],ss:'Puting susu lecet/retak, nyeri saat menyusui, bisa berdarah. Penyebab: teknik perlekatan (LATCH-ON) salah. Pintu masuk infeksi ke mastitis.',dd:'Mastitis (ada demam, kemerahan), Paget disease puting (lesi menahun), Dermatitis kontak',tx:'Perbaiki teknik latch-on (mulut bayi mencakup areola). Lanolin murni (Lansinoh) oles setelah menyusui. Biarkan kering di udara.'},
+],
+endokrin:[
+{id:'dm2',name:'DM Tipe 2',years:[2022,2024],ss:'Hiperglikemia: poliuri, polidipsi, polifagi, penurunan BB. GDP ≥126 atau GDS ≥200 + gejala atau HbA1c ≥6.5%. Sering ditemukan pada skrining tanpa gejala.',dd:'DM tipe 1 (muda, kurus, DKA), MODY, DM sekunder, Impaired fasting glucose',tx:'Metformin lini 1 + modifikasi gaya hidup. Kombinasi jika HbA1c tidak tercapai: DPP4i, SGLT2i, GLP-1RA, sulfonilurea, insulin. Target HbA1c <7%.'},
+{id:'sindrom_metabolik',name:'Sindrom Metabolik',years:[2022,2024],ss:'≥3 dari 5: lingkar pinggang naik (>90cm pria/>80cm wanita Asia), TG ≥150, HDL rendah, TD ≥130/85, GDP ≥100. Resistensi insulin sebagai inti.',dd:'DM tipe 2, Hipotiroid, Sindrom Cushing, PCOS, Dislipidemia primer',tx:'Modifikasi gaya hidup: penurunan BB 7-10%, aktivitas fisik 150 menit/minggu, diet mediterania. Farmako per komponen: statin, antihipertensi, metformin, fibrat.'},
+{id:'obesitas',name:'Obesitas + Hiperlipidemia',years:[2022],ss:'IMT ≥30 (Barat) / ≥25 (Asia). Hiperlipidemia: LDL naik, TG naik, HDL turun. Risiko kardiovaskular, DM2, sleep apnea, NAFLD, osteoartritis.',dd:'Obesitas sekunder (Cushing, hipotiroid), Pseudoobesitas (edema)',tx:'Diet defisit 500-1000 kkal, aktivitas fisik, CBT. Farmako: Orlistat, Bupropion-naltrexone. Bariatrik jika IMT ≥40 atau ≥35+komorbid. Statin untuk dislipidemia.'},
+{id:'graves',name:'Graves Disease / Hipertiroid',years:[2022],ss:'Palpitasi, tremor, berkeringat, intoleransi panas, BB turun meski nafsu makan naik, EKSOFTALMUS, goiter difus. FT4/T3 naik, TSH turun. TRAb (+).',dd:'Tiroiditis subakut/Hashimoto fase awal, Struma multinodosa toksik, Adenoma toksik, Feokromositoma',tx:'Anti-tiroid: PTU atau Metimazol. Beta bloker (Propranolol) untuk gejala. Yodium radioaktif. Tiroidektomi. Krisis tiroid: PTU+Lugol+deksametason+beta bloker.'},
+{id:'hhs',name:'HHS (Hyperosmolar Hyperglycemic State)',years:[2023],ss:'GDS EKSTREM (>600 mg/dL), osmolalitas >320. Dehidrasi berat, gangguan kesadaran. TIDAK ada atau minimal ketonemia. Umumnya DM tipe 2 lansia.',dd:'DKA (ada ketosis, pH <7.3, lebih pada DM tipe 1), Stroke, Uremia, Keracunan',tx:'Rehidrasi agresif NaCl 0.9% IV (defisit 8-10L). Insulin regular IV setelah 1-2 jam rehidrasi. Koreksi elektrolit (K+). Monitor neurologi.'},
+{id:'hipoglikemia',name:'Hipoglikemia Berat',years:[2023],ss:'GDS <70 mg/dL + gejala adrenergik (berkeringat, tremor, palpitasi) atau neuroglikopenik (bingung, kejang, tidak sadar). Sering akibat insulin atau sulfonilurea.',dd:'Stroke, Epilepsi, Intoksikasi alkohol, Syncope, Ensefalopati lain',tx:'Sadar: 15g karbohidrat cepat (3-4 tablet glukosa), ulangi 15 menit. TIDAK SADAR: Dekstrosa 40% 25-50ml IV bolus atau Glukagon 1mg IM/SC.'},
+{id:'goiter',name:'Goiter Endemik',years:[2024],ss:'Pembesaran tiroid difus di daerah kekurangan iodium. Sering EUTIROID. Stadium WHO I-III. Kadar TSH normal.',dd:'Hashimoto, Graves disease, Struma multinodosa, Ca tiroid, Tiroiditis subakut',tx:'Iodium (garam beriodium, suplementasi). LT4 jika hipotiroid. Bedah jika menekan struktur sekitar. Radioiodin jika toksik.'},
+{id:'gizi_buruk',name:'Gizi Buruk (Marasmus)',years:[2025],ss:'BB sangat rendah (<60% median W/A atau z-score <-3 SD). Anak "KULIT TULANG", otot atrofi, muka seperti orang tua. TIDAK ada edema. MUAC <11.5cm.',dd:'Kwashiorkor (ada edema, hipoalbuminemia), Marasmus-kwashiorkor, TB, HIV, jantung bawaan',tx:'Fase stabilisasi: diet F-75 tiap 2 jam, koreksi hipoglikemia/hipotermia/dehidrasi/infeksi. Fase rehabilitasi: F-100. Suplementasi mikronutrien.'},
+{id:'cushing',name:'Cushing Disease / Cushing Syndrome',years:[2025],ss:'Obesitas sentral (MOON FACE, BUFFALO HUMP, perut buncit). STRIAE UNGU, kulit tipis mudah memar, hirsutisme, amenore, hipertensi, osteoporosis, DM. Kortisol naik. Deksametason supresi abnormal.',dd:'Obesitas biasa, Sindrom metabolik, DM tipe 2, Pseudo-Cushing (depresi, alkohol)',tx:'Adenoma hipofisis: operasi transsfenoidal. Adrenal: adrenalektomi. Ektopik: terapi tumor primer. Medikamentosa: Ketokonazol, Metirapone.'},
+{id:'hipoparatiroid',name:'Hipoparatiroid',years:[2025],ss:'Hipokalsemia: CHVOSTEK SIGN (+), TROUSSEAU SIGN (+), kram otot, parestesi perioral/ujung jari, kejang, laryngospasme. PTH turun, Ca turun, P naik. Paling sering pasca tiroidektomi.',dd:'Hiperventilasi (alkalosis respiratorik), Hipomagnesemia, Pseudohipoparatiroid, Pankreatitis akut',tx:'Akut (gejala berat): Ca glukonat 10% 10ml IV perlahan. Kronis: Ca karbonat 3x500mg + Kalsitriol 0.25-0.5mcg/hari.'},
+],
+hemato:[
+{id:'imunisasi',name:'Imunisasi Anak (Pentabio, OPV, BCG, KMS)',years:[2022],ss:'Jadwal imunisasi dasar: BCG (lahir-1 bulan), HB (lahir, 2, 3, 4 bulan), DPT-HB-Hib (2, 3, 4 bulan), OPV (0, 2, 3, 4 bulan), MR (9 bulan). KMS untuk monitoring tumbang.',dd:'Reaksi simpang vaksin (demam, kemerahan lokal), KIPI berat (anafilaksis - sangat jarang)',tx:'BCG: ID lengan kanan. OPV: tetes oral. Pentabio (DPT-HB-Hib): IM anterolateral paha. Parasetamol jika demam. Edukasi reaksi normal.'},
+{id:'malaria',name:'Malaria Falciparum',years:[2022,2023],ss:'Demam periodik (bisa tidak beraturan), menggigil, berkeringat, sakit kepala, mual. Splenomegali. Apusan: RING FORMS multipel/sel, "headphone" gametosit. RDT (+).',dd:'Malaria vivax/malariae, Dengue, Leptospirosis, Sepsis, Meningitis',tx:'ACT: DHP (Dihydroartemisinin-Piperaquine) x3 hari + Primakuin hari ke-1. Berat/serebral: ARTESUNAT IV 2.4mg/kgBB (0, 12, 24j lalu 24j sekali).'},
+{id:'dhf',name:'DHF / DBD',years:[2022,2023],ss:'Demam tinggi mendadak 2-7 hari, perdarahan spontan (petekie, epistaksis, gusi), TOURNIQUET TEST (+), trombositopenia <100.000, Ht naik ≥20%. NS1 antigen (+) hari 1-5.',dd:'Demam dengue, ITP, Malaria, Leptospirosis, Tifoid, Meningokokemia',tx:'Grade I-II: IVFD kristaloid 5-7ml/kgBB/jam, monitor Ht tiap 6j. Grade III-IV (DSS): resusitasi cepat 10-20ml/kgBB. Parasetamol. HINDARI NSAID.'},
+{id:'leptospirosis',name:'Leptospirosis',years:[2023],ss:'Demam bifasik, mialgia betis, KONJUNGTIVAL SUFFUSION (khas, tanpa discharge). Weil disease: ikterus, gagal ginjal, perdarahan. Riwayat banjir/binatang. IgM leptospira (+).',dd:'Dengue, Hepatitis akut, Malaria, Tifoid, Ricketsia',tx:'Ringan: Doksisiklin 2x100mg x7 hari. Berat: Penisilin G IV atau Seftriakson 1g/24j x7 hari. Suportif: IVFD, monitor ginjal/hati.'},
+{id:'limfadenopati_tb',name:'Limfadenopati TB Anak',years:[2023],ss:'Pembesaran KGB servikal atau multipel, KERAS/KENYAL, TIDAK nyeri tekan (beda infeksi bakteri). Demam subfebris, keringat malam, BB turun. Uji tuberkulin (+). Biopsi: granuloma kaseosa.',dd:'Limfadenitis bakterial (nyeri, eritema), Limfoma, Leukemia, Mononukleosis, Toksoplasma',tx:'OAT Kategori I: 2RHZE/4RH. Monitor respons (KGB mengecil). Bedah draining jika abses.'},
+{id:'anemia_besi',name:'Anemia Defisiensi Besi',years:[2023],ss:'Lemah, lesu, pucat (konjungtiva, telapak). Atrofi papil lidah, koilonikia, angular stomatitis. Hb turun, MCV/MCH turun (MIKROSITIK HIPOKROMIK), ferritin turun, TIBC naik.',dd:'Anemia penyakit kronik (ferritin N/naik), Talasemia minor (HbA2 naik), Sideroblastik',tx:'Ferrous sulfat 3x200mg oral + Vit C. Hb naik 1-2g/dL tiap 3 minggu. Lanjutkan 3 bulan setelah Hb normal. Cari penyebab.'},
+{id:'ra',name:'Rheumatoid Arthritis (RA)',years:[2024],ss:'Artritis SIMETRIS sendi kecil (MCP, PIP, pergelangan tangan), KAKU PAGI >1 JAM, >6 minggu. RF (+), anti-CCP (+). Foto: osteopenia periartikular, erosi. DAS28.',dd:'OA (kaku pagi <30 menit), Gout, Artritis lupus, Artritis reaktif, Psoriatic arthritis',tx:'Metotreksat (MTX) lini 1 + asam folat. NSAID simtomatis. Kortikosteroid bridging. Biologik (anti-TNF, JAK inhibitor) jika MTX gagal.'},
+{id:'sle',name:'SLE',years:[2024],ss:'Multiorgan: MALAR RASH, fotosensitivitas, ulkus oral, artritis non-erosif, serositis, nefritis, neuropsikiatri. ANA (+), anti-dsDNA (+), C3/C4 turun. Kriteria SLICC ≥4.',dd:'RA, Sindrom Sjogren, Dermatomiositis, MCTD, Infeksi, Drug-induced lupus',tx:'Semua: Hidroksiklorokuin 400mg/hari. Ringan: Prednison dosis rendah+NSAID. Berat: Metilprednisolon pulse + MMF/Azatioprin. Nefritis: MMF/Siklofosfamid.'},
+{id:'demam_rematik',name:'Demam Rematik Akut / RHD',years:[2024],ss:'Anak 5-15 tahun, 2-4 minggu pasca faringitis Streptokokus. Kriteria Jones mayor: KARDITIS, ARTRITIS migrans, KOREA, nodul subkutan, eritema marginatum. ASTO naik.',dd:'Artritis juvenil idiopatik, Artritis reaktif, SLE, Infektif endokarditis',tx:'Penisilin V atau Benzatin penisilin 1.2 juta IU IM eradikasi Streptokokus. Aspirin untuk artritis. Kortikosteroid jika karditis berat. Profilaksis Benzatin penisilin tiap 3-4 minggu hingga dewasa.'},
+{id:'polimyalgia',name:'Polimyalgia Reumatik',years:[2024],ss:'Nyeri dan kaku BILATERAL bahu dan/atau panggul pada usia >50 tahun (rata-rata 70). Kaku pagi >45 menit. Tidak ada artritis perifer. LED/CRP naik sangat. Respons DRAMATIS kortikosteroid.',dd:'RA onset lanjut usia, OA bahu, Miopati inflamasi, Fibromialgia, Keganasan',tx:'Prednison 15-20mg/hari - respons DRAMATIS dalam 24-72 jam (hampir patognomonik). Tapering perlahan 1-2 tahun. Osteoporosis profilaksis.'},
+{id:'anafilaksis',name:'Syok Anafilaksis',years:[2025],ss:'Reaksi alergi sistemik berat cepat (menit-jam) setelah alergen. Hipotensi + urtikaria/angioedema + stridor/wheezing. Kesadaran bisa menurun.',dd:'Syok septik, Syok kardiogenik, Sinkop vasovagal, Angioedema herediter, Serangan asma',tx:'SEGERA: EPINEFRIN 0.3-0.5mg IM paha anterolateral (1:1000). O2 high-flow. IVFD cepat. Antihistamin H1+H2. Kortikosteroid IV. Observasi 4-8 jam.'},
+{id:'angioedema',name:'Angioedema / Reaksi Anafilaktik',years:[2025],ss:'Edema non-pitting tiba-tiba di wajah (periorbital, bibir, lidah), laring (STRIDOR - darurat), GI (kolik). Bisa tanpa urtikaria. ACEi-induced: bradikinin-mediated.',dd:'Angioedema herediter (C1-INH turun), Urtikaria saja, Selulitis wajah',tx:'Alergi/histamin: Epinefrin IM + antihistamin + kortikosteroid. ACEi-induced: hentikan ACEi, Icatibant atau C1-INH konsentrat. Jaga jalan napas.'},
+],
+musku:[
+{id:'ankle_sprain',name:'Ankle Sprain',years:[2022,2023,2025],ss:'Riwayat INVERSI mendadak. Nyeri lateral ankle, edema, ekimosis. Nyeri tekan ATFL. Ottawa ankle rules untuk eksklusi fraktur: nyeri tulang malleolus/navikular/basis MT5 + tidak bisa jalan 4 langkah.',dd:'Fraktur avulsi malleolus lateral, Fraktur basis MT5, Cedera tendon peroneus, Sinus tarsi syndrome',tx:'PRICE: Protection, Rest, Ice 20 menit q2-3j, Compression, Elevation. NSAID. Fisioterapi propioseptif. Grade III/tidak stabil: rujuk orthopedi.'},
+{id:'oa_genu',name:'OA Genu (Osteoartritis Lutut)',years:[2023,2025],ss:'Nyeri lutut kronik ≥45 tahun, KREPITASI, KAKU PAGI <30 MENIT (beda RA), nyeri memburuk aktivitas. Foto: celah sendi menyempit, osteofit, sklerosis subkondral.',dd:'RA (kaku pagi >1 jam, RF+), Gout/pseudogout, Bursitis, Meniskopati, Artritis septik',tx:'Fisioterapi, penguatan kuadriseps, penurunan BB. Parasetamol (lini 1). NSAID topikal/oral. Injeksi kortikosteroid intraartikular. Berat: TKR.'},
+{id:'knee_sprain',name:'Knee Sprain',years:[2022],ss:'Nyeri lutut pasca trauma (puntiran/benturan). Efusi, instabilitas. Lachman test/anterior drawer (+): ACL. Posterior drawer (+): PCL. Valgus/varus stress (+): MCL/LCL.',dd:'Meniscus tear, Fraktur kondilus femur/tibia, Dislokasi patela, Bursitis prepatelar',tx:'RICE akut. NSAID. Fisioterapi sesuai ligamen cedera. ACL ruptur + instabilitas: rekonstruksi arthroscopic.'},
+{id:'wrist_sprain',name:'Wrist Sprain',years:[2022],ss:'Nyeri pergelangan tangan pasca trauma (jatuh bertumpu tangan). Watson test (scaphoid) atau nyeri ANATOMICAL SNUFFBOX: singkirkan fraktur skafoid!',dd:'Fraktur skafoid (nyeri anatomical snuffbox - foto NORMAL awal!), Fraktur Colles, TFCC tear',tx:'Imobilisasi wrist splint 2-3 minggu. NSAID. Jika curiga fraktur skafoid: foto serial atau MRI.'},
+{id:'fraktur',name:'Fraktur Klavikula / Radius Ulna',years:[2022],ss:'Nyeri, deformitas, edema, krepitasi pasca trauma. Klavikula: step-off di klavikula. 1/3 medial radius ulna: Galeazzi (radius + dislokasi DRUJ) atau Monteggia (ulna + dislokasi kaput radii).',dd:'Kontusio, Dislokasi, Fraktur stress, Patologis fraktur',tx:'Klavikula non-displaced: arm sling 3-6 minggu. Displaced atau Galeazzi/Monteggia: ORIF. Analgetik, RICE. Rujuk orthopedi.'},
+{id:'osteomyelitis',name:'Osteomyelitis',years:[2023],ss:'Nyeri tulang lokal, bengkak, kemerahan, DEMAM. Anak: metafisis tulang panjang tersering. ESR/CRP naik sangat. Foto: destruksi tulang muncul 10-14 hari. MRI: GOLD STANDARD.',dd:'Selulitis, Artritis septik, Tumor tulang, Fraktur stress, Sarkoma Ewing',tx:'AB IV 4-6 minggu: Kloksasilin/Fluklosasilin (S.aureus). MRSA: Vankomisin. Bedah debridemen jika abses atau sequester.'},
+{id:'tenosinovitis',name:'Tenosinovitis Supuratif',years:[2023],ss:'KANAVEL 4 SIGNS (fleksor supuratif): (1) Nyeri tekan seluruh tendon (2) Jari posisi fleksi (3) Edema fusiform jari (4) Nyeri saat ekstensi pasif jari. DARURAT bedah!',dd:'Selulitis jari, Artritis septik PIP/DIP, Felons (abses pulpa), Paronikia',tx:'DARURAT bedah: irigasi dan drainase tendon sheath. AB IV broad-spectrum (Ampisilin-sulbaktam). Elevasi, splint.'},
+{id:'gout',name:'Gout Arthritis',years:[2022],ss:'Nyeri sendi AKUT monoartikular (MTP-1 = PODAGRA tersering). Merah, panas, bengkak, onset MENDADAK (sering tengah malam). Asam urat naik. Kristal urat (jarum, negatif birefringent) pada aspirasi sendi.',dd:'Artritis septik (kultur sendi), Pseudogout (kristal rhomboid, positif birefringent), Selulitis, RA',tx:'Akut: NSAID (Indometasin/Na-diklofenak) x5-7 hari atau Kolkisin 3x0.5mg hari 1. Profilaksis: Allopurinol mulai 100mg, target AU <6mg/dL. Diet rendah purin.'},
+{id:'lipoma',name:'Lipoma (Eksisi)',years:[2024],ss:'Benjolan LUNAK, berbatas tegas, MOBILE, tidak nyeri, tumbuh lambat. Lunak kenyal seperti adonan. Kulit di atasnya normal. Superfisial atau subfasial.',dd:'Kista sebasea (lebih superfisial, ada punctum), Lipoma infiltratif, Liposarkoma (keras, tidak mobile)',tx:'Eksisi bedah melalui insisi kecil jika mengganggu. Lokal anestesi. Kapsul harus diangkat UTUH untuk mencegah rekurensi.'},
+{id:'meniscus_tear',name:'Meniscus Tear',years:[2025],ss:'Nyeri lutut (biasanya medial) pasca trauma puntir. KLIK, LOCKING, giving way. McMurray test (+), Apley (+), Thessaly (+). Joint line tenderness. MRI: GOLD STANDARD.',dd:'ACL tear, OA genu, Bursitis, Fraktur kondilus, Plica syndrome',tx:'Akut: RICE, NSAID. Tear kecil/stabil: konservatif + fisioterapi 6-12 minggu. Locking/gagal konservatif: ARTROSKOPI.'},
+{id:'ruptur_achilles',name:'Ruptur Tendon Achilles',years:[2025],ss:'Bunyi POP tiba-tiba, nyeri tumit posterior, tidak bisa berdiri di ujung jari. THOMPSON TEST (+): meremas betis tidak menggerakkan kaki. Gap di tendon teraba.',dd:'Tendinitis achilles (nyeri kronik, tendon intak), Avulsi kalkaneus, Ruptur parsial',tx:'Konservatif: cast equinus 6-8 minggu. Operasi (tendon repair): lebih baik untuk atlet muda/aktif. Fisioterapi intensif pasca imobilisasi.'},
+],
+integumen:[
+{id:'mh_mb',name:'Morbus Hansen (MH) Tipe MB',years:[2022,2024],ss:'Lesi kulit >5, bilateral/simetris, eritema atau hipopigmentasi, BATAS TIDAK TEGAS, anestesia. Penebalan saraf perifer multipel (N.ulnaris, N.peroneus, N.auricularis magnus). BTA (+) banyak.',dd:'MH tipe PB, Tinea versikolor, Vitiligo, Granuloma annulare, Lupus kutis',tx:'MDT MB (12 bulan): Rifampisin 600mg+Klofazimin 300mg (supervisor bulanan) + Dapson 100mg+Klofazimin 50mg (harian). Monitor reaksi kusta.'},
+{id:'moluscum',name:'Moluscum Kontagiosum',years:[2023,2024],ss:'Papul kecil (2-5mm), UMBILICATED (cekung di tengah), flesh-colored/putih mutiara, berkelompok. Anak: tubuh/wajah/ekstremitas. Dewasa seksual aktif: genital.',dd:'Varicella (vesikel, demam), Kutil (veruka), Folikulitis, MH nodular',tx:'Self-limiting pada imunokompeten 6-18 bulan. Krioterapi, kuretase, ekspresi isi papul, asam trikloroasetat.'},
+{id:'tinea_pedis',name:'Tinea Pedis',years:[2022],ss:'Lesi interdigitalis (sela jari 3-4-5), sisik, maserasi, fisura, eritema, gatal. Juga telapak dan dorsum kaki. KOH: hifa bersepta.',dd:'Dermatitis kontak, Psoriasis palmaris, Kandidiasis interdigitalis (lebih basah)',tx:'Antijamur topikal: Klotrimazol/Mikonazol/Terbinafin krim 2x/hari x4 minggu. Luas/rekuren: Terbinafin oral 1x250mg x2 minggu atau Flukonazol. Jaga kaki kering.'},
+{id:'tinea_manuum',name:'Tinea Manuum',years:[2022],ss:'Satu tangan biasanya (TWO FEET-ONE HAND syndrome). Sisik difus, hiperkeratosis, gatal. Sering bersamaan tinea pedis. KOH: hifa bersepta.',dd:'Dermatitis kontak, Psoriasis palmaris, Eksema dishidrotik',tx:'Antijamur topikal 4-6 minggu. Oral jika luas.'},
+{id:'herpes_zoster',name:'Herpes Zoster',years:[2022],ss:'Prodromal: nyeri neuropatik terbakar di dermatom 2-3 hari sebelum lesi. Vesikel berkelompok eritema, unilateral, SATU DERMATOM (tidak melewati garis tengah). Nyeri pasca-herpetik >3 bulan.',dd:'Herpes simpleks, Dermatitis kontak vesikular, Impetigo',tx:'Asiklovir 5x800mg x7 hari (efektif <72 jam). Valasiklovir 3x1000mg x7 hari. Analgetik nyeri akut. Neuralgia postherpetik: Pregabalin/Gabapentin, Amitriptilin.'},
+{id:'fde',name:'FDE (Fixed Drug Eruption)',years:[2022],ss:'Plak eritematosa/hiperpigmentasi bulat oval di tempat SAMA setiap kali minum obat tertentu. Bisa berbentuk bula. Meninggalkan bekas hiperpigmentasi. Obat tersering: Kotrimoksazol, Tetrasiklin, NSAID.',dd:'Urtikaria, Eritema multiforme, Herpes simpleks, Tinea korporis, Selulitis',tx:'HENTIKAN obat penyebab. Kortikosteroid topikal/oral jangka pendek. Antihistamin. Edukasi obat yang harus dihindari seumur hidup.'},
+{id:'dermatitis_atopi',name:'Dermatitis Atopi',years:[2022],ss:'GATAL HEBAT, lesi eksematosa kronik relaps. Lokasi age-specific: bayi (wajah), anak (fleksura siku/lutut), dewasa (leher, tangan). Riwayat atopi keluarga. Kriteria Hanifin-Rajka.',dd:'Dermatitis seboroik, Psoriasis, Skabies, Dermatitis kontak, Tinea',tx:'Pelembab regular (emolien). Kortikosteroid topikal (hidrokortison 1% atau mometason). Antihistamin untuk gatal. Takrolimus/pimekrolimus jika steroid-sensitive area.'},
+{id:'varicella',name:'Varicella',years:[2023],ss:'Lesi POLIMORFIK berbagai stadium bersamaan (makula→papula→vesikel "teardrop"→krusta). Distribusi SENTRIPETAL (wajah, batang tubuh > ekstremitas). Demam, gatal hebat.',dd:'Herpes zoster diseminata, Impetigo bulosa, Hand-foot-mouth disease, Scabies',tx:'Asiklovir 5x800mg x7 hari oral (<24 jam lesi). Antihistamin untuk gatal. Jaga lesi bersih. ISOLASI hingga semua lesi berkrusta.'},
+{id:'dermatitis_numular',name:'Dermatitis Numularis / LSK',years:[2023],ss:'Numularis: plak eksematosa BERBENTUK KOIN, gatal, batas tegas, di ekstremitas. LSK: plak LIKENIFIKASI (penebalan kulit, garis kulit prominen) akibat garukan kronik.',dd:'Tinea korporis (KOH positif), Psoriasis (skuama tebal putih), Dermatitis atopi',tx:'Kortikosteroid topikal potensi sedang-kuat. Emolien. Antihistamin. LSK: oklusi dengan balutan. Hindari garukan.'},
+{id:'insect_bite',name:'Insect Bite',years:[2023],ss:'Papul eritematosa, edema lokal, gatal/nyeri di area gigitan serangga. CENTRAL PUNCTUM (+). Reaksi lokal vs sistemik (anafilaksis). Papular urtikaria pada anak sensitif.',dd:'Urtikaria, Folikulitis, Scabies, Impetigo, Reaksi obat',tx:'Kompres dingin. Antihistamin oral (Loratadin/Cetirizin). Kortikosteroid topikal. Anafilaksis: Epinefrin IM.'},
+{id:'pityriasis_rosea',name:'Pityriasis Rosea',years:[2023],ss:'"HERALD PATCH": plak oval tunggal di batang tubuh terlebih dahulu, diikuti lesi sekunder mengikuti garis kulit (pola POHON CEMARA/Christmas tree). Gatal ringan. Self-limiting 6-12 minggu.',dd:'Tinea korporis (KOH positif), Psoriasis gutata, SIFILIS SEKUNDER (wajib serologis!), Dermatitis seboroik',tx:'Self-limiting. Antihistamin untuk gatal. Kortikosteroid topikal ringan. Emolien. Hindari panas.'},
+{id:'urtikaria',name:'Urtikaria Akut',years:[2023],ss:'WHEAL (edema superfisial) eritematosa, sangat gatal, pucat saat ditekan, HILANG <24 JAM per lesi. Bisa disertai angioedema. Penyebab: makanan, obat, infeksi, fisik.',dd:'Angioedema herediter, Vaskulitis urtikaria, Mastositosis, Anafilaksis',tx:'Antihistamin H1 generasi 2: Cetirizin 10mg atau Loratadin 10mg. Berat: Difenhidramin IM + Kortikosteroid sistemik. Anafilaksis: Epinefrin 0.3mg IM.'},
+{id:'skrofuloderma',name:'Skrofuloderma TB',years:[2024],ss:'Nodul subkutan di atas KGB yang terinfeksi TB (servikal tersering). Berkembang menjadi abses → ulkus dengan TEPI MENGGAUNG (undermining edge) → fistula → sikatrik. BTA (+) dari sekret.',dd:'Sporotrikosis, Aktinomikosis, Karbunkel, Hidradenitis supurativa',tx:'OAT Kategori I: 2RHZE/10RH. Tidak perlu operasi rutin kecuali abses besar (aspirasi).'},
+{id:'furunkel',name:'Furunkel',years:[2024],ss:'Nodul inflamasi dalam folikel rambut, nyeri, berisi pus, merah. Area gesekan (leher, aksila, bokong, paha). S.aureus penyebab tersering. Karbunkel: furunkel multipel bersatu.',dd:'Kista inklusi terinfeksi, Hidradenitis supurativa, Abses, Nodul acne',tx:'Kompres hangat. Fluktuatif: INSISI DAN DRAINASE. AB: Kloksasilin/Diklosasilin jika selulitis sekitar/multipel. MRSA: TMP-SMX atau Doksisiklin.'},
+{id:'clm',name:'CLM (Cutaneous Larva Migrans)',years:[2024],ss:'JALUR BERKELOK-KELOK eritematosa yang BERGERAK (beberapa mm/hari), gatal hebat. Telapak kaki, bokong, tangan. Riwayat kontak tanah/pasir (pantai). Larva Ancylostoma braziliense.',dd:'Larva migrans viseral, Skabies (terowongan lebih pendek, tidak bergerak cepat), Dermatitis kontak',tx:'Albendazol 400mg/hari x3 hari atau Ivermektin 200mcg/kgBB dosis tunggal. Antihistamin untuk gatal.'},
+{id:'erisipelas',name:'Erisipelas',years:[2024],ss:'Lesi eritematosa superfisial BERBATAS TEGAS dan MENINGGI (dermis + limfatik), tepi kulit jeruk, nyeri, hangat, demam menggigil. Streptokokus beta-hemolitikus grup A tersering.',dd:'Selulitis (batas tidak tegas, lebih dalam), Herpes zoster, Dermatitis kontak, DVT',tx:'Penisilin V 4x500mg x10 hari atau Amoksisilin. Berat: Penisilin G IV. Elevasi ekstremitas. Edukasi faktor risiko.'},
+{id:'dermatitis_venenata',name:'Dermatitis Venenata',years:[2025],ss:'Lesi eritema, edema, vesikel/bula pada area kontak bahan iritan/toksik. BATAS TEGAS mengikuti area kontak. Nyeri > gatal. Onset cepat.',dd:'Dermatitis kontak alergi (lebih lambat, meluas), Selulitis, Luka bakar kimia, Fitofotodermatitis',tx:'Cuci area dengan air mengalir SEGERA. Kortikosteroid topikal/oral. Kompres NaCl. Analgetik. Edukasi hindari iritan.'},
+{id:'erupsi_obat',name:'Erupsi Obat Morbiliformis',years:[2025],ss:'Ruam makulopapular simetris, dimulai batang tubuh menyebar ke ekstremitas, gatal. Muncul 7-14 hari setelah mulai obat baru. Tersering: Ampisilin, Allopurinol, sulfonamid, NSAID.',dd:'Campak/morbili (Koplik spots, batuk, demam tinggi), Roseola, Rubela, DRESS (eosinofilia), SJS/TEN',tx:'HENTIKAN obat penyebab. Antihistamin. Kortikosteroid topikal. Oral kortikosteroid jika berat. Monitor tanda SJS/TEN (lepuh, mukosa).'},
+{id:'akne_berat',name:'Akne Vulgaris Derajat Berat',years:[2025],ss:'Nodul, kista, abses multipel di wajah/dada/punggung. Nyeri. Sikatrik aktif atau parut pasca inflamasi. Derajat berat: >5 nodul/kista.',dd:'Rosasea (tidak ada komedo, usia >30, flush), Folikulitis, Dermatitis perioral',tx:'Topikal: Adapalen + Benzoil peroksida. Oral: Doksisiklin 2x100mg x3-6 bulan. Berat/rekalsitran: Isotretinoin 0.5-1mg/kgBB/hari (rujuk SpKK).'},
+{id:'lsk',name:'LSK / Neurodermatitis',years:[2025],ss:'Plak LIKENIFIKASI (kulit menebal, garis kulit prominen, hiperpigmentasi) akibat garukan/gosokan kronik. Sangat gatal - SIKLUS GATAL-GARUK-GATAL. Lokasi: tengkuk, pergelangan, malleolus.',dd:'Psoriasis, Dermatitis atopi, Lichen planus, Dermatitis numularis, Tinea',tx:'Kortikosteroid topikal potensi tinggi (Klobetasol/Betametason) + oklusi. Antihistamin sedasi malam (CTM). Cegah garukan: potong kuku, balutan.'},
+{id:'karbunkel',name:'Karbunkel',years:[2025],ss:'Gabungan beberapa furunkel membentuk massa inflamasi besar dengan MULTIPLE DISCHARGE POINTS. Lebih dalam dan berat dari furunkel. Demam, malaise.',dd:'Furunkel tunggal, Hidradenitis supurativa, Aktinomikosis, Skrofuloderma',tx:'Insisi dan drainase LUAS. Diklosasilin atau Kloksasilin 4x500mg x7-14 hari. MRSA: Kotrimoksazol atau Doksisiklin. Monitor DM sebagai faktor risiko.'},
+],
+}
+
+let activeSys='all', activeYears=new Set([2022,2023,2024,2025]), searchQ=''
+const sk=id=>'osce4_'+id
+const loadNote=id=>{try{return JSON.parse(localStorage.getItem(sk(id)))||{}}catch{return{}}}
+const saveNote=(id,obj)=>localStorage.setItem(sk(id),JSON.stringify(obj))
+const clearNote=id=>localStorage.removeItem(sk(id))
+
+function buildNav(){
+  const mkItems=container=>{
+    const allCnt=SYSTEMS.reduce((a,s)=>a+visibleCount(s.key),0)
+    container.innerHTML=`
+      <div class="side-label">Sistem Organ</div>
+      <div class="side-item ${activeSys==='all'?'active':''}" onclick="setSys('all')">
+        <span class="side-icon">📋</span><span class="side-name">Semua Sistem</span>
+        <span class="side-count">${allCnt}</span>
+      </div>
+      <div class="side-divider"></div>
+      ${SYSTEMS.map(s=>`<div class="side-item ${activeSys===s.key?'active':''}" onclick="setSys('${s.key}')">
+        <span class="side-icon">${s.icon}</span><span class="side-name">${s.label}</span>
+        <span class="side-count">${visibleCount(s.key)}</span>
+      </div>`).join('')}`
+  }
+  mkItems(document.getElementById('sidebar'))
+  mkItems(document.getElementById('overlayNav'))
+}
+
+function visibleCount(key){return(DATA[key]||[]).filter(t=>t.years.some(y=>activeYears.has(y))).length}
+
+function setSys(key){
+  activeSys=key
+  document.getElementById('activeSysLabel').textContent=key==='all'?'Semua Sistem':(SYSTEMS.find(s=>s.key===key)||{}).label||''
+  buildNav(); render(); closeOverlay()
+  window.scrollTo({top:0,behavior:'smooth'})
+}
+
+function toggleYr(yr,btn){
+  if(activeYears.has(yr)&&activeYears.size===1)return
+  if(activeYears.has(yr)){activeYears.delete(yr);btn.className='yr-btn'}
+  else{activeYears.add(yr);btn.className=`yr-btn on-${yr}`}
+  buildNav(); render()
+}
+
+document.getElementById('searchInput').addEventListener('input',function(){
+  searchQ=this.value.toLowerCase().trim()
+  document.getElementById('searchClear').style.display=searchQ?'block':'none'
+  render()
+})
+function clearSearch(){searchQ='';document.getElementById('searchInput').value='';document.getElementById('searchClear').style.display='none';render()}
+
+function toggleCard(id){
+  const c=document.getElementById('card_'+id)
+  if(c) c.classList.toggle('open')
+}
+
+function saveCard(id,e){
+  if(e)e.stopPropagation()
+  const ss=document.getElementById('ss_'+id)?.value||''
+  const dd=document.getElementById('dd_'+id)?.value||''
+  const tx=document.getElementById('tx_'+id)?.value||''
+  saveNote(id,{ss,dd,tx})
+  const btn=document.getElementById('sb_'+id)
+  if(btn){const orig=btn.textContent;btn.textContent='✓ Tersimpan!';btn.className='btn-save flash';setTimeout(()=>{btn.textContent=orig;btn.className='btn-save'},2000)}
+  updateStats(); toast('✓ Catatan tersimpan')
+}
+
+function resetCard(id,e){
+  if(e)e.stopPropagation()
+  if(!confirm('Reset ke data default?'))return
+  clearNote(id)
+  const t=Object.values(DATA).flat().find(x=>x.id===id)
+  if(!t)return
+  const el=f=>document.getElementById(f+'_'+id)
+  if(el('ss'))el('ss').value=t.ss||''
+  if(el('dd'))el('dd').value=t.dd||''
+  if(el('tx'))el('tx').value=t.tx||''
+  updateStats(); toast('🔄 Direset ke default')
+}
+
+function saveAll(){
+  let n=0
+  document.querySelectorAll('.card').forEach(card=>{
+    const id=card.dataset.id
+    if(!id)return
+    const ss=document.getElementById('ss_'+id)?.value
+    if(ss!==undefined){saveNote(id,{ss,dd:document.getElementById('dd_'+id)?.value||'',tx:document.getElementById('tx_'+id)?.value||''});n++}
+  })
+  const btn=document.querySelector('.btn-save-all')
+  btn.textContent='✓ Semua Tersimpan!';btn.style.background='#059669'
+  setTimeout(()=>{btn.textContent='💾 Simpan Semua';btn.style.background=''},2500)
+  updateStats(); toast(`✓ ${n} catatan tersimpan`)
+}
+
+function openOverlay(){document.getElementById('overlay').classList.add('show')}
+function closeOverlay(){document.getElementById('overlay').classList.remove('show')}
+
+function toast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show')
+  setTimeout(()=>t.classList.remove('show'),2200)
+}
+
+function updateStats(){
+  const rows=getRows()
+  let total=0,multi=0,filled=0
+  rows.forEach(({list})=>list.forEach(t=>{
+    total++;if(t.years.length>1)multi++
+    const n=loadNote(t.id);if(n.ss||n.dd||n.tx)filled++
+  }))
+  document.getElementById('statTotal').textContent=total
+  document.getElementById('statMulti').textContent=multi
+  document.getElementById('statFilled').textContent=filled
+}
+
+function getRows(){
+  const sys=activeSys==='all'?SYSTEMS:SYSTEMS.filter(s=>s.key===activeSys)
+  return sys.map(s=>({sys:s,list:(DATA[s.key]||[]).filter(t=>{
+    if(!t.years.some(y=>activeYears.has(y)))return false
+    if(!searchQ)return true
+    return [t.name,t.ss,t.dd,t.tx].join(' ').toLowerCase().includes(searchQ)
+  })})).filter(r=>r.list.length>0)
+}
+
+function escH(s){return s?s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'):''}
+
+function render(){
+  const rows=getRows()
+  if(!rows.length){
+    document.getElementById('content').innerHTML='<div class="empty"><div class="empty-icon">🔍</div><strong>Tidak ada topik ditemukan</strong><br><small>Coba ubah filter atau kata kunci</small></div>'
+    updateStats();return
+  }
+  document.getElementById('content').innerHTML=rows.map(({sys,list})=>`
+    <div class="sys-section">
+      <div class="sys-head">
+        <span style="font-size:18px">${sys.icon}</span>
+        <h2>${sys.label}</h2>
+        <span class="sys-count">${list.length} topik</span>
+      </div>
+      ${list.map(t=>{
+        const note=loadNote(t.id)
+        const ss=note.ss!==undefined?note.ss:(t.ss||'')
+        const dd=note.dd!==undefined?note.dd:(t.dd||'')
+        const tx=note.tx!==undefined?note.tx:(t.tx||'')
+        const hasSaved=Object.keys(note).length>0
+        const isMulti=t.years.length>1
+        const dots=['#60a5fa','#fb923c','#34d399'].map((c,i)=>{
+          const v=[ss,dd,tx][i]
+          return`<div class="dot" style="background:${v?c:'var(--border)'};opacity:${v?1:0.3}"></div>`
+        }).join('')
+        return`<div class="card" id="card_${t.id}" data-id="${t.id}">
+          <div class="card-head" onclick="toggleCard('${t.id}')">
+            <div class="card-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+            <div class="card-info">
+              <div class="card-name">${t.name}</div>
+              <div class="card-tags">
+                ${t.years.map(y=>`<span class="tag tag-${y}">Mei ${y}</span>`).join('')}
+                ${isMulti?`<span class="tag tag-multi">🔁 ${t.years.length}× muncul</span>`:''}
+                ${hasSaved&&(ss||dd||tx)?'<span class="tag tag-saved">✓ tersimpan</span>':''}
+              </div>
+            </div>
+            <div class="dots">${dots}</div>
+          </div>
+          <div class="card-body">
+            <div class="fields">
+              <div class="field-group">
+                <div class="field-label ss">🔵 Signs &amp; Symptoms</div>
+                <textarea id="ss_${t.id}" class="ss-ta" placeholder="Tanda dan gejala khas..." onclick="event.stopPropagation()">${escH(ss)}</textarea>
+              </div>
+              <div class="field-group">
+                <div class="field-label dd">🟠 Diagnosis Banding</div>
+                <textarea id="dd_${t.id}" class="dd-ta" placeholder="Diagnosis banding utama..." onclick="event.stopPropagation()">${escH(dd)}</textarea>
+              </div>
+              <div class="field-group">
+                <div class="field-label tx">🟢 Tatalaksana</div>
+                <textarea id="tx_${t.id}" class="tx-ta" placeholder="Tatalaksana farmako & non-farmako..." onclick="event.stopPropagation()">${escH(tx)}</textarea>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="btn-reset" onclick="resetCard('${t.id}',event)">Reset</button>
+              <button class="btn-save" id="sb_${t.id}" onclick="saveCard('${t.id}',event)">💾 Simpan</button>
+            </div>
+          </div>
+        </div>`
+      }).join('')}
+    </div>`).join('')
+  updateStats()
+}
+
+buildNav(); render()
+</script>
+</body>
+</html>
